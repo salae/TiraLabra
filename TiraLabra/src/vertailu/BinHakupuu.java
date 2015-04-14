@@ -65,74 +65,61 @@ public class BinHakupuu implements Puu{
      */
     public void lisaaSolmu(Solmu uusi) {        
         Solmu p = null;  //vanhempi
-        if(this.juuri == null){
-            this.juuri = uusi;
-        } else {
-            Solmu x = this.juuri;  //etsintäkohta          
-            while(x != null){
-                p = x;
-                if(uusi.getAvain() < x.getAvain()){
-                    x = x.getVasenLapsi();
-                } else {
-                    x = x.getOikeaLapsi();
-                }
-            }uusi.setVanhempi(p);
-            if(uusi.getAvain() < p.getAvain()){
-                p.setVasenLapsi(uusi);
+        Solmu x = this.juuri;  //etsintäkohta          
+        while(x != null){
+            p = x;
+            if(uusi.getAvain() < x.getAvain()){
+                x = x.getVasenLapsi();
             } else {
-                p.setOikeaLapsi(uusi);
-            }             
+                x = x.getOikeaLapsi();
+            }
         }
+        uusi.setVanhempi(p);
+        if(p == null){
+            this.setJuuri(uusi);
+        }else if(uusi.getAvain() < p.getAvain()){
+            p.setVasenLapsi(uusi);
+        } else {
+            p.setOikeaLapsi(uusi);
+        }    
     }
 
     @Override
     public void poista(int avain) {
         Solmu pois = this.hae(avain);
-        if(pois != null){          
-          Solmu p = null;  //poistettavan vanhempi
-          Solmu lapsi = null;
-          //poistettavalla ei lapsia
-          if(pois.getOikeaLapsi()== null && pois.getVasenLapsi() == null){
-              p = pois.getVanhempi();
-              if(p == null){
-                  this.setJuuri(null);
-              } else if(pois == p.getVasenLapsi()){
-                  p.setVasenLapsi(null);
-              } else {
-                  p.setOikeaLapsi(null);
-              }
-          //poistettavalla on yksi lapsi
-          } else if(pois.getOikeaLapsi() == null || pois.getVasenLapsi() == null){              
-              if(pois.getVasenLapsi() != null){
-                lapsi = pois.getVasenLapsi();
-              } else {
-                lapsi = pois.getOikeaLapsi();
-              }
-              p = pois.getVanhempi();
-              lapsi.setVanhempi(p);
-              if(p == null){
-                  this.setJuuri(lapsi);
-              }
-              if(pois == p.getVasenLapsi()){
-                  p.setVasenLapsi(lapsi);
-              } else {
-                  p.setOikeaLapsi(lapsi);
-              } 
-          //poistettavalla on kaksi lasta
-          } else {
-              Solmu seur = haeMin(pois.getOikeaLapsi());
-              pois.setAvain(seur.getAvain());
-              lapsi = seur.getOikeaLapsi();
-              p = seur.getVanhempi();
-              if(p.getVasenLapsi() == seur){
-                  p.setVasenLapsi(lapsi);
-              }else {
-                  p.setOikeaLapsi(lapsi);
-              }
-              if(lapsi != null){
-                  lapsi.setVanhempi(p);
-              }
-          }
+        if(pois.getVasenLapsi() == null){
+            this.vaihdaAlipuuta(pois, pois.getOikeaLapsi());
+        }else if(pois.getOikeaLapsi() == null){
+            this.vaihdaAlipuuta(pois, pois.getVasenLapsi());
+        }else {
+            Solmu seur = this.haeMin(pois.getOikeaLapsi());
+            if(seur.getVanhempi() != pois){
+                this.vaihdaAlipuuta(seur, seur.getOikeaLapsi());
+                seur.setOikeaLapsi(pois.getOikeaLapsi());
+                seur.getOikeaLapsi().setVanhempi(seur);
+            }
+            this.vaihdaAlipuuta(pois, seur);
+            seur.setVasenLapsi(pois.getVasenLapsi());
+            seur.getVasenLapsi().setVanhempi(seur);
+        }
+    }
+    
+    /**
+     * Vaihtaa yhden alipuun tilalle toisen
+     * 
+     * @param eka vaihdettavan alipuun juuri
+     * @param toka korvaavan alipuun juuri
+     */
+    private void vaihdaAlipuuta(Solmu eka, Solmu toka){
+        if(eka.getVanhempi() == null){
+            this.setJuuri(toka);
+        }else if(eka == eka.getVanhempi().getVasenLapsi()){
+            eka.getVanhempi().setVasenLapsi(toka);
+        }else {
+            eka.getVanhempi().setOikeaLapsi(toka);
+        }
+        if(toka != null){
+            toka.setVanhempi(eka.getVanhempi());
         }
     }
     

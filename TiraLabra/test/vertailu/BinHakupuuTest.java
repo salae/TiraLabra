@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
  */
 public class BinHakupuuTest {
     
+    BinHakupuu bin;
+    
     public BinHakupuuTest() {
     }
     
@@ -27,76 +29,122 @@ public class BinHakupuuTest {
     
     @Before
     public void setUp() {
+        bin = new BinHakupuu();
     }
     
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of getJuuri method, of class BinHakupuu.
-     */
     @Test
-    public void testGetJuuri() {
-        System.out.println("getJuuri");
-        BinHakupuu instance = new BinHakupuu();
+    public void testGetJuuriNull() {
+        System.out.println("getJuuriNull");
         Solmu expResult = null;
-        Solmu result = instance.getJuuri();
+        Solmu result = bin.getJuuri();
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testGetJuuriNotNull() {
+        System.out.println("getJuuriNotNull");
+        bin.lisaa(4);
+        int expResult = 4;
+        int result = bin.getJuuri().getAvain();
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of setJuuri method, of class BinHakupuu.
-     */
     @Test
     public void testSetJuuri() {
         System.out.println("setJuuri");
         Solmu juuri = new Solmu(12);
-        BinHakupuu instance = new BinHakupuu();
-        instance.setJuuri(juuri);
+        bin.setJuuri(juuri);
         Solmu expResult = juuri;
-        Solmu result = instance.getJuuri();
+        Solmu result = bin.getJuuri();
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of hae method, of class BinHakupuu.
-     */
     @Test
     public void testHaeEiLoydy() {
-        System.out.println("hae");
+        System.out.println("haeEiLoydy");
         int avain = 5;
-        BinHakupuu instance = new BinHakupuu();
         Solmu expResult = null;
-        Solmu result = instance.hae(avain);
+        Solmu result = bin.hae(avain);
         assertEquals(expResult, result);
     }
-
-    /**
-     * Test of lisaa method, of class BinHakupuu.
-     */
+    
+    @Test
+    public void testHaeLoytyy() {
+        System.out.println("haeLoytyy");
+        bin.lisaa(3);
+        bin.lisaa(5);
+        int avain = 5;
+        int expResult = 5;
+        int result = bin.hae(avain).getAvain();
+        assertEquals(expResult, result);
+    }
+    
     @Test
     public void testLisaa() {
         System.out.println("lisaa");
         int avain = 1;
-        BinHakupuu instance = new BinHakupuu();
-        instance.lisaa(avain);
-        Solmu expResult = instance.getJuuri();
-        Solmu result = instance.hae(avain);
+        bin.lisaa(avain);
+        Solmu expResult = bin.getJuuri();
+        Solmu result = bin.hae(avain);
         assertEquals(expResult, result);
     }
-
-//    /**
-//     * Test of poista method, of class BinHakupuu.
-//     */
-//    @Test
-//    public void testPoista() {
-//        System.out.println("poista");
-//        int avain = 0;
-//        BinHakupuu instance = new BinHakupuu();
-//        instance.poista(avain);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testMin() {
+        System.out.println("minimi");
+        Solmu juuri = new Solmu(3);
+        bin.lisaaSolmu(juuri);
+        bin.lisaa(5);
+        bin.lisaa(1);
+        bin.lisaa(2);
+        int expResult = 1;
+        int result = bin.haeMin(juuri).getAvain();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testPoista2lasta() {
+        System.out.println("poista, kaksi lasta");
+        bin.lisaa(3);
+        bin.lisaa(4);
+        bin.lisaa(1);
+        bin.tulosta(bin.getJuuri());
+        bin.poista(3);
+        bin.tulosta(bin.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  bin.hae(3);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testPoistaEiLapsia() {
+        System.out.println("poista, ei lapsia");
+        bin.lisaa(3);
+        bin.lisaa(4);
+        bin.lisaa(1);
+        bin.tulosta(bin.getJuuri());
+        bin.poista(1);
+        bin.tulosta(bin.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  bin.hae(1);
+        assertEquals(expResult, result);
+    }
+ 
+    @Test
+    public void testPoista1Lapsi() {
+        System.out.println("poista, yksi lapsi");
+        bin.lisaa(3);
+        bin.lisaa(4);
+        bin.lisaa(6);
+        bin.lisaa(1);
+        bin.tulosta(bin.getJuuri());
+        bin.poista(4);
+        bin.tulosta(bin.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  bin.hae(4);
+        assertEquals(expResult, result);
+    }
     
 }

@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
  * @author Anu
  */
 public class PunamustaPuuTest {
+    PunamustaPuu pmPuu;
     
     public PunamustaPuuTest() {
     }
@@ -27,6 +28,7 @@ public class PunamustaPuuTest {
     
     @Before
     public void setUp() {
+        pmPuu = new PunamustaPuu();
     }
     
     @After
@@ -37,15 +39,28 @@ public class PunamustaPuuTest {
      * Test of hae method, of class PunamustaPuu.
      */
     @Test
-    public void testHae() {
-        System.out.println("hae");
-        int avain = 5;
-        PunamustaPuu instance = new PunamustaPuu();
-        Solmu expResult = null;
-        Solmu result = instance.hae(avain);
+    public void testHaeLoytyy() {
+        System.out.println("hae, loytyy");
+        PmSolmu s1 = new PmSolmu(4,true);
+        PmSolmu s2 = new PmSolmu(2,true);
+        pmPuu.lisaaSolmu(s1);        
+        pmPuu.lisaaSolmu(s2);
+        Solmu expResult = s2;
+        Solmu result = pmPuu.hae(2);
         assertEquals(expResult, result);
     }
 
+    @Test
+    public void testHaeEiLoydy() {
+        System.out.println("hae, ei loydy");
+        PmSolmu s1 = new PmSolmu(4,true);
+        PmSolmu s2 = new PmSolmu(2,true);
+        pmPuu.lisaaSolmu(s1);        
+        pmPuu.lisaaSolmu(s2);
+        Solmu expResult = null;
+        Solmu result = pmPuu.hae(1);
+        assertEquals(expResult, result);
+    }   
 //    /**
 //     * Test of lisaa method, of class PunamustaPuu.
 //     */

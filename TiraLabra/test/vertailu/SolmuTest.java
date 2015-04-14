@@ -9,16 +9,19 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Solmu-luokan yksikkötestausta
+ * 
  * @author Anu
  */
 public class SolmuTest {
+    
+    Solmu solmu;
     
     public SolmuTest() {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {        
     }
     
     @AfterClass
@@ -27,6 +30,7 @@ public class SolmuTest {
     
     @Before
     public void setUp() {
+        solmu = new Solmu(3);
     }
     
     @After
@@ -39,9 +43,8 @@ public class SolmuTest {
     @org.junit.Test
     public void testGetAvain() {
         System.out.println("getAvain");
-        Solmu instance = new Solmu(3);
         int expResult = 3;
-        int result = instance.getAvain();
+        int result = solmu.getAvain();
         assertEquals(expResult, result);
     }
 
@@ -52,11 +55,10 @@ public class SolmuTest {
     public void testSetAvain() {
         System.out.println("setAvain");
         int avain = 43;
-        Solmu instance = new Solmu(3);
-        instance.setAvain(avain);
-        int expResult = avain;
-        int result = instance.getAvain();
-        assertEquals(expResult, result);
+        solmu.setAvain(avain);
+        int odotettu = avain;
+        int tulos = solmu.getAvain();
+        assertEquals(odotettu, tulos);
     }
 
     /**
@@ -65,9 +67,8 @@ public class SolmuTest {
     @org.junit.Test
     public void testGetVasenLapsi() {
         System.out.println("getVasenLapsi");
-        Solmu instance = new Solmu(8);
         Solmu expResult = null;
-        Solmu result = instance.getVasenLapsi();
+        Solmu result = solmu.getVasenLapsi();
         assertEquals(expResult, result);
     }
 
@@ -91,53 +92,49 @@ public class SolmuTest {
     @org.junit.Test
     public void testGetOikeaLapsi() {
         System.out.println("getOikeaLapsi");
-        Solmu instance = new Solmu(2);
         Solmu oikea = new Solmu(5);
-        instance.setOikeaLapsi(oikea);
+        solmu.setOikeaLapsi(oikea);
         Solmu expResult = oikea;
-        Solmu result = instance.getOikeaLapsi();
+        Solmu result = solmu.getOikeaLapsi();
         assertEquals(expResult, result);
     }
-//
-//    /**
-//     * Test of setOikeaLapsi method, of class Solmu.
-//     */
-//    @org.junit.Test
-//    public void testSetOikeaLapsi() {
-//        System.out.println("setOikeaLapsi");
-//        Solmu oikeaLapsi = null;
-//        Solmu instance = null;
-//        instance.setOikeaLapsi(oikeaLapsi);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of getVanhempi method, of class Solmu.
-//     */
-//    @org.junit.Test
-//    public void testGetVanhempi() {
-//        System.out.println("getVanhempi");
-//        Solmu instance = null;
-//        Solmu expResult = null;
-//        Solmu result = instance.getVanhempi();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setVanhempi method, of class Solmu.
-//     */
-//    @org.junit.Test
-//    public void testSetVanhempi() {
-//        System.out.println("setVanhempi");
-//        Solmu vanhempi = null;
-//        Solmu instance = null;
-//        instance.setVanhempi(vanhempi);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
+    /**
+     * Test of setOikeaLapsi method, of class Solmu.
+     */
+    @org.junit.Test
+    public void testSetOikeaLapsi() {
+        System.out.println("setOikeaLapsi");
+        Solmu oikeaLapsi = new Solmu(8);
+        solmu.setOikeaLapsi(oikeaLapsi);
+        assertEquals(solmu.getOikeaLapsi().getAvain(),oikeaLapsi.getAvain());
+    }
+
+    /**
+     * Test of getVanhempi method, of class Solmu.
+     */
+    @org.junit.Test
+    public void testGetVanhempi() {
+        System.out.println("getVanhempi");
+        Solmu instance = new Solmu(1);
+        solmu.setVanhempi(instance);
+        Solmu expResult = instance;
+        Solmu result = solmu.getVanhempi();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setVanhempi method, of class Solmu.
+     */
+    @org.junit.Test
+    public void testSetVanhempi() {
+        System.out.println("setVanhempi");
+        Solmu vanhempi = new Solmu(10);
+        solmu.setVanhempi(vanhempi);
+        Solmu expResult = vanhempi;
+        Solmu result = solmu.getVanhempi();
+        assertEquals(expResult, result);        
+    }
 
     /**
      * Test of toString method, of class Solmu.
@@ -145,9 +142,9 @@ public class SolmuTest {
     @org.junit.Test
     public void testToString() {
         System.out.println("toString");
-        Solmu instance = new Solmu(5);
-        String expResult = "5";
-        String result = instance.toString();
+        String expResult = "3";
+        System.out.println(solmu);
+        String result = solmu.toString();
         assertEquals(expResult, result);
     }
 
@@ -158,9 +155,8 @@ public class SolmuTest {
     public void testCompareTo() {
         System.out.println("compareTo");
         Solmu vertailtava = new Solmu(5);
-        Solmu instance = new Solmu(2);
-        int expResult = -3;
-        int result = instance.compareTo(vertailtava);
+        int expResult = -2;
+        int result = solmu.compareTo(vertailtava);
         assertEquals(expResult, result);
     }
     

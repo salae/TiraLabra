@@ -1,57 +1,69 @@
 package vertailu;
 
-import java.util.TreeSet;
-
 /**
  * Punamusta puu on tasapainotettu binäärinen hakupuu, jonka solmuissa on
  * tieto siitä, onko solmu punainen vai musta.
  * 
  * @author Anu
  */
-public class PunamustaPuu implements Puu{
+public class PunamustaPuu extends BinHakupuu implements Puu{
     
-    // Toteutetaan ensin Javan TreeSet luokan avulla
-    private TreeSet<Solmu>  pmPuu; 
+    private PmSolmu juuri;
 
     /**
      * Luo tyhjän punamustan puun
      */
     public PunamustaPuu() {
-        this.pmPuu = new TreeSet<Solmu>();
+        this.juuri = null;
     }
 
-    @Override
-    public Solmu hae(int avain) {
-        //palaluttaa viitteen "irralliseen" solmuun, mutta riittää tähän
-        Solmu haettu = new Solmu(avain);
-        if(this.pmPuu.contains(haettu)){
-            return haettu;
-        } else {
-            return null;
-        }        
-    }
-
-    @Override
-    public void lisaa(int avain) {
-        this.pmPuu.add(new Solmu(avain));
-    }
+//    @Override
+//    public void lisaa(int avain) {
+//
+//        
+//    }
 
     @Override
     public void poista(int avain) {
-        this.pmPuu.remove(new Solmu(avain));
+//        this.pmPuu.remove(new Solmu(avain));
     }
     
-    /**
-     * Tulostaa puun alkiot
-     * 
-     * @return puun alkiot
-     */
-    public String tulostaPuu(){
-        String puuTuloste = "";
-        for (Solmu s : this.pmPuu)
-            System.out.println(s);        
-        return puuTuloste;
+    private void kiertoVasemmalle(PmSolmu x){
+        PmSolmu y = (PmSolmu) x.getOikeaLapsi();
+        x.setOikeaLapsi(y.getVasenLapsi());
+        if(y.getVasenLapsi() != null){
+            y.getVasenLapsi().setVanhempi(x);
+        }
+        y.setVanhempi(x.getVanhempi());
+        if(x.getVanhempi() == null){
+            this.setJuuri(y);
+        }else if(x == x.getVanhempi().getVasenLapsi()){
+            x.getVanhempi().setVasenLapsi(y);
+        }else {
+            x.getVanhempi().setOikeaLapsi(y);
+        }
+        y.setVasenLapsi(x);
+        x.setVanhempi(y);
     }
+    
+    private void kiertoOikealle(PmSolmu x){
+        PmSolmu y = (PmSolmu) x.getVasenLapsi();
+        x.setVasenLapsi(y.getOikeaLapsi());
+        if(y.getOikeaLapsi() != null){
+            y.getOikeaLapsi().setVanhempi(x);
+        }
+        y.setVanhempi(x.getVanhempi());
+        if(x.getVanhempi() == null){
+            this.setJuuri(y);
+        }else if(x == x.getVanhempi().getOikeaLapsi()){
+            x.getVanhempi().setOikeaLapsi(y);
+        }else {
+            x.getVanhempi().setVasenLapsi(y);
+        }
+        y.setOikeaLapsi(x);
+        x.setVanhempi(y); 
+    }
+
     
 }
 
