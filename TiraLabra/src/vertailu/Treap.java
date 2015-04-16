@@ -6,36 +6,52 @@ package vertailu;
  * @author Anu
  */
 public class Treap extends BinHakupuu implements Puu{
-    private Solmu juuri;
+    private TreapSolmu juuri;
 
     /**
      * Luo tyhjän Treap-tietorakenteen.
      * 
      */
     public Treap() {
+        this.setJuuri(null);
+    }
+    
+    @Override
+    public TreapSolmu hae(int avain) {
+        return (TreapSolmu) super.hae(avain); 
+    } 
+    
+    @Override
+    public void lisaa(int avain) {
+        TreapSolmu uusi = new TreapSolmu(avain);
+        TreapSolmu vJuuri = (TreapSolmu) this.getJuuri();
+        this.setJuuri(this.lisaaSolmu(uusi, vJuuri));        
+    } 
+    /**
+     * Lisää solmun treapiin.
+     * 
+     * @param uusi  uusi solmu
+     * @param vJuuri vanha (tämänhetkinen) juuri
+     * @return uusi juuri
+     */
+    public TreapSolmu lisaaSolmu(TreapSolmu uusi, TreapSolmu vJuuri){
+        if(vJuuri == null){
+            return uusi;
+        }else if(uusi.getAvain() < vJuuri.getAvain()){
+            
+        }else {
+            
+        }
+        return vJuuri;
+    }
+    
+    @Override
+    public void poista(int avain) {
         
     }
 
-    @Override
-    public void poista(int avain) {
-        super.poista(avain); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void lisaa(int luku) {
-        super.lisaa(luku); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public Solmu hae(int avain) {
-        return super.hae(avain); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setJuuri(Solmu juuri) {
-        super.setJuuri(juuri); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
+  
     
 }
