@@ -14,7 +14,7 @@ public class Solmu implements Comparable<Solmu>{
     private Solmu vanhempi;
     
     /**
-     * Luo uuden solmun, jonka avain annetaan parametrina
+     * Luo uuden solmun, jonka avain annetaan parametrinä.
      * 
      * @param avain solmun avain 
      */
@@ -24,7 +24,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Palauttaa solmun avaimen
+     * Palauttaa solmun avaimen.
      * 
      * @return solmun avain
      */
@@ -33,7 +33,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Asettaa solmuun avaimen
+     * Asettaa solmuun avaimen.
      * 
      * @param avain solmun uusi avain
      */
@@ -42,7 +42,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Palauttaa solmun vasemman lapsen
+     * Palauttaa solmun vasemman lapsen.
      * 
      * @return solmun vasen lapsi
      */
@@ -51,7 +51,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Asettaa solmulle vasemman lapsen
+     * Asettaa solmulle vasemman lapsen.
      * 
      * @param vasenLapsi solmun uusi vasen lapsi
      */
@@ -60,7 +60,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Palauttaa solmun oikean lapsen
+     * Palauttaa solmun oikean lapsen.
      * 
      * @return solmun oikea lapsi
      */
@@ -69,7 +69,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Asettaa solmulle oikean lapsen
+     * Asettaa solmulle oikean lapsen.
      * 
      * @param oikeaLapsi solmun uusi oikea lapsi
      */
@@ -78,7 +78,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Palauttaa solmun vanhemman
+     * Palauttaa solmun vanhemman.
      * 
      * @return solmun vanhempi
      */
@@ -87,7 +87,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Asettaa solmulle vanhemman
+     * Asettaa solmulle vanhemman.
      * 
      * @param vanhempi solmun uusi vanhempi
      */
@@ -96,7 +96,7 @@ public class Solmu implements Comparable<Solmu>{
     }
     
     /**
-     * Palauttaa solmun sisällön tekstimuodossa
+     * Palauttaa solmun sisällön tekstimuodossa.
      * 
      * @return solmun sisältö merkkijonona
      */
@@ -105,7 +105,7 @@ public class Solmu implements Comparable<Solmu>{
     }
 
     /**
-     * Vertailee solmuja avainten arvojen perusteella
+     * Vertailee solmuja avainten arvojen perusteella.
      * 
      * @param vertailtava solmu, johon vertaillaan
      * @return 0, jos solmujen avaimet ovat yhtä suuria; 

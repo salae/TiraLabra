@@ -35,6 +35,20 @@ public class PunamustaPuuTest {
     public void tearDown() {
     }
 
+    @Test
+    public void testLisaaSolmu() {
+        System.out.println("lisaa Solmu");
+        PmSolmu s1= new PmSolmu(3,true);
+        PmSolmu s2 = new PmSolmu (4,true);
+        pmPuu.lisaaSolmu(s1);
+        pmPuu.lisaaSolmu(s2);
+        System.out.println(s1);
+        pmPuu.tulosta(pmPuu.getJuuri());
+        Solmu expResult = s1;
+        Solmu result = pmPuu.getJuuri();
+        assertEquals(expResult, result);
+    }    
+    
     /**
      * Test of hae method, of class PunamustaPuu.
      */
@@ -45,6 +59,7 @@ public class PunamustaPuuTest {
         PmSolmu s2 = new PmSolmu(2,true);
         pmPuu.lisaaSolmu(s1);        
         pmPuu.lisaaSolmu(s2);
+        pmPuu.tulosta(pmPuu.getJuuri());
         Solmu expResult = s2;
         Solmu result = pmPuu.hae(2);
         assertEquals(expResult, result);
@@ -61,23 +76,17 @@ public class PunamustaPuuTest {
         Solmu result = pmPuu.hae(1);
         assertEquals(expResult, result);
     }   
-//    /**
-//     * Test of lisaa method, of class PunamustaPuu.
-//     */
-//    @Test
-//    public void testLisaa() {
-//        System.out.println("lisaa");
-//        int avain = 0;
-//        PunamustaPuu instance = new PunamustaPuu();
-//        instance.lisaa(avain);
-//        Solmu expResult = new Solmu(0);
-//        Solmu result = instance.hae(avain);
-//        assertEquals(expResult, result);
-//    }
-//
-//    /**
-//     * Test of poista method, of class PunamustaPuu.
-//     */
+
+    @Test
+    public void testLisaa() {
+        System.out.println("lisaa");
+        int avain = 1;
+        pmPuu.lisaa(avain);
+        Solmu expResult = pmPuu.getJuuri();
+        Solmu result = pmPuu.hae(avain);
+        assertEquals(expResult, result);
+    }
+
 //    @Test
 //    public void testPoista() {
 //        System.out.println("poista");
@@ -86,19 +95,6 @@ public class PunamustaPuuTest {
 //        instance.poista(avain);
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of tulostaPuu method, of class PunamustaPuu.
-//     */
-//    @Test
-//    public void testTulostaPuu() {
-//        System.out.println("tulostaPuu");
-//        PunamustaPuu instance = new PunamustaPuu();
-//        instance.lisaa(2);
-//        String expResult = "2";
-//        String result = instance.tulostaPuu();
-//        assertEquals(expResult, result);
 //    }
     
 }

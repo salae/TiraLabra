@@ -12,8 +12,15 @@ public class PmSolmu extends Solmu{
     
     private boolean punainen; //punainen on true, musta on false
     
+    /**
+     * Luo uuden punamustan puun solmun.
+     * 
+     * @param avain
+     * @param onkoPunainen true, jos punainen; false, jos musta
+     */
     public PmSolmu(int avain, boolean onkoPunainen){
         super(avain);
+        //periaatteessa tämän nähtävästi voisi pistää oleutusarvoisesti punaiseksi
         this.punainen = onkoPunainen;
     }
 
@@ -34,15 +41,10 @@ public class PmSolmu extends Solmu{
     public void asetaVari(boolean punainen) {
         this.punainen = punainen;
     }
-    
-     /**
-     * Palauttaa solmun sisällön tekstimuodossa
-     * 
-     * @return solmun sisältö merkkijonona
-     */   
+  
     @Override
         public String toString(){
-            String vari = (punainen) ? "punainen" : "musta" ;
+        String vari = (punainen) ? "punainen" : "musta" ;
         return String.valueOf(this.getAvain()) +
                 " (" + vari +")";
     }

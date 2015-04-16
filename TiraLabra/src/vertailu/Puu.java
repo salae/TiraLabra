@@ -25,6 +25,8 @@ public interface Puu {
     /**
      * Poistaa puusta halutun avaimen.
      * 
+     * Jos avainta ei löydy puusta, ei tehdä mitään.
+     * 
      * @param avain poistettava avain
      */
     public void poista(int avain);

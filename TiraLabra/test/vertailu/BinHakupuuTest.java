@@ -92,7 +92,7 @@ public class BinHakupuuTest {
         assertEquals(expResult, result);
     }
     @Test
-    public void testMin() {
+    public void testhaeMin() {
         System.out.println("minimi");
         Solmu juuri = new Solmu(3);
         bin.lisaaSolmu(juuri);
@@ -146,5 +146,19 @@ public class BinHakupuuTest {
         Solmu result =  bin.hae(4);
         assertEquals(expResult, result);
     }
-    
+
+    @Test
+    public void testVaihdaAlipuuta() {
+        System.out.println("vaihdaAlipuuta");
+        bin.lisaa(2);
+        Solmu eka = bin.getJuuri();
+        Solmu toka = new Solmu(7);
+        bin.lisaaSolmu(toka);  
+        bin.vaihdaAlipuuta(eka, toka);
+        Solmu expResult = toka;
+        Solmu result = bin.getJuuri();
+        assertEquals(expResult,result);
+
+    }
+
 }
