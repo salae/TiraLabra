@@ -8,7 +8,7 @@ package vertailu;
  */
 public class PunamustaPuu extends BinHakupuu implements Puu{
     
-    private PmSolmu juuri;
+//    private PmSolmu juuri;
     private PmSolmu nil;
 
     /**
@@ -16,12 +16,12 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      */
     public PunamustaPuu() {
         this.nil = new PmSolmu(-1, false);
-        this.juuri = this.nil;
+        this.setJuuri(this.nil);
     }
 
     @Override
     public PmSolmu hae(int avain) {
-        PmSolmu x = this.juuri;  //etsintäkohta
+        PmSolmu x = (PmSolmu) this.getJuuri();  //etsintäkohta        
         while(x != this.nil && x.getAvain() != avain){
             if(avain < x.getAvain()) {
                 x = (PmSolmu) x.getVasenLapsi();
@@ -29,6 +29,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
                 x = (PmSolmu) x.getOikeaLapsi();
             }
         }
+        if(x == this.nil){ x = null;} //ohjelman yhtenäisen logiikan takia
         return x;
     }
     
@@ -54,7 +55,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      */
      private void lisaaSolmu(PmSolmu uusi) {        
         PmSolmu p = this.nil;  //vanhempi
-        PmSolmu x = this.juuri;  //etsintäkohta          
+        PmSolmu x = (PmSolmu) this.getJuuri();  //etsintäkohta          
         while(x != this.nil){
             p = x;
             x = (PmSolmu)((uusi.getAvain() < x.getAvain()) ?  x.getVasenLapsi()
@@ -99,12 +100,23 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
                 y.setOikeaLapsi(pois.getOikeaLapsi());
                 y.getOikeaLapsi().setVanhempi(y);
             }
+            this.vaihdaAlipuuta(pois, y);
+            y.setVasenLapsi(pois.getVasenLapsi());
+            y.getVasenLapsi().setVanhempi(y);
+            y.asetaVari(pois.onkoPunainen());
         }
         if(!yOrigVari){
             this.korjaaPoisto(x);
         }
     }
     
+    @Override
+    public Solmu haeMin(Solmu s){
+        while(s.getVasenLapsi() != this.nil){
+            s = s.getVasenLapsi();
+        }        
+        return s;
+    }    
     /**
      * Vaihtaa yhden alipuun tilalle toisen.
      * 
@@ -176,9 +188,9 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      */
     private void korjaaLisays(PmSolmu uusi) {
         while(((PmSolmu)uusi.getVanhempi()).onkoPunainen()){
-            PmSolmu y = new PmSolmu(0,true);
+//            PmSolmu y = new PmSolmu(0,true);
             if(((PmSolmu)uusi.getVanhempi())== ((PmSolmu)uusi.getVanhempi()).getVanhempi().getVasenLapsi()){
-                y = (PmSolmu)uusi.getVanhempi().getVanhempi().getOikeaLapsi();
+                PmSolmu y = (PmSolmu)uusi.getVanhempi().getVanhempi().getOikeaLapsi();
                 if(y.onkoPunainen()){
                     ((PmSolmu)uusi.getVanhempi()).asetaVari(false);
                     y.asetaVari(false);
@@ -194,7 +206,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
                     this.kiertoOikealle(((PmSolmu)uusi.getVanhempi().getVanhempi()));
                 }                
             }else{
-                y = (PmSolmu)uusi.getVanhempi().getVanhempi().getVasenLapsi();
+               PmSolmu y = (PmSolmu)uusi.getVanhempi().getVanhempi().getVasenLapsi();
                 if(y.onkoPunainen()){
                     ((PmSolmu)uusi.getVanhempi()).asetaVari(false);
                     y.asetaVari(false);
@@ -217,7 +229,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      * Korjataan puu, niin että se täyttää poiston jälkeen
      * punamustalle puulle asetetut ehdot.
      * 
-     * @param uusi lisätty solmu
+     * @param x korjausta kaipaava solmu
      */
     private void korjaaPoisto(PmSolmu x) {
         while(x != this.getJuuri() && !x.onkoPunainen()){
@@ -273,6 +285,14 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
         x.asetaVari(false);
     }
 
-    
+
+    @Override
+    public void tulosta(Solmu s) {
+        if (s != nil) {
+           tulosta(s.getVasenLapsi());
+           System.out.println(s.toString());
+           tulosta(s.getOikeaLapsi());
+        }
+    } 
 }
 

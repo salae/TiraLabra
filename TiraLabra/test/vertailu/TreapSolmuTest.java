@@ -38,6 +38,7 @@ public class TreapSolmuTest {
     @Test
     public void testToString() {
         System.out.println("toString");
+        System.out.println(trS);
         trS.setPrioriteetti(512);
         System.out.println(trS);
         int expResult = 512;

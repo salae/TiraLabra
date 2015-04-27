@@ -133,7 +133,7 @@ public class BinHakupuu implements Puu{
      * Palauttaa solmun, jolla on arvoltaan pienin avain.
      * 
      * Pienimmän arvon etsintä koskee alipuuta, jonka juuri annetaan parametrinä.
-     * Pienipiä arvoja voi olla useita, joista yksi palautetaan. Jos puu on
+     * Pienimpiä arvoja voi olla useita, joista yksi palautetaan. Jos puu on
      * tyhjä, palautetaan null.
      * 
      * @param s sen puun juuri, josta pienintä arvoa haetaan
@@ -144,6 +144,21 @@ public class BinHakupuu implements Puu{
             s = s.getVasenLapsi();
         }        
         return s;
+    }
+   
+     /**
+     * Tyhjentää annetusta solmusta alkavan alipuun.
+     * 
+     * Poistaa kaikki puun solmut.
+     * 
+     * @param s juuri, josta alkava alipuu tyhjennetään
+     */
+    public void tyhjennaPuu(Solmu s) {
+        if (s != null) {
+           tyhjennaPuu(s.getVasenLapsi());
+           poistaSolmu(s);
+           tyhjennaPuu(s.getOikeaLapsi());
+        }
     }
     
     /**

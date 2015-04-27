@@ -28,58 +28,89 @@ public class TreapTest {
     
     @Before
     public void setUp() {
-        Treap tr = new Treap();
+        tr = new Treap();
     }
     
     @After
     public void tearDown() {
     }
 
-//    @Test
-//    public void testHaeLoytyy() {
-//        System.out.println("hae, loytyy");
-//        TreapSolmu s1 = new TreapSolmu(4);
-//        TreapSolmu s2 = new TreapSolmu(2);
-//        tr.lisaaSolmu(s1);        
-//        tr.lisaaSolmu(s2);
-//        tr.tulosta(tr.getJuuri());
-//        TreapSolmu expResult = s2;S
-//        TreapSolmu result = tr.hae(2);
-//        assertEquals(expResult, result);
-//    }
-//
-//    @Test
-//    public void testHaeEiLoydy() {
-//        System.out.println("hae, ei loydy");
-//        PmSolmu s1 = new PmSolmu(4,true);
-//        PmSolmu s2 = new PmSolmu(2,true);
-//        tr.lisaaSolmu(s1);        
-//        tr.lisaaSolmu(s2);
-//        TreapSolmu expResult = null;
-//        TreapSolmu result = tr.hae(1);
-//        assertEquals(expResult, result);
-//    }   
+    @Test
+    public void testHaeLoytyy() {
+        System.out.println("hae, loytyy");
+        TreapSolmu s1 = new TreapSolmu(4);
+        TreapSolmu s2 = new TreapSolmu(2);
+        tr.lisaaSolmu(s1);        
+        tr.lisaaSolmu(s2);
+        tr.tulosta(tr.getJuuri());
+        TreapSolmu expResult = s2;
+        TreapSolmu result = tr.hae(2);
+        assertEquals(expResult, result);
+    }
 
-//
-//    @Test
-//    public void testLisaa() {
-//        System.out.println("lisaa");
-//        int avain = 0;
-//        Treap instance = new Treap();
-//        instance.lisaa(avain);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//
-//    @Test
-//    public void testPoista() {
-//        System.out.println("poista");
-//        int avain = 0;
-//        Treap instance = new Treap();
-//        instance.poista(avain);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testHaeEiLoydy() {
+        System.out.println("hae, ei loydy");
+        TreapSolmu s1 = new TreapSolmu(4);
+        TreapSolmu s2 = new TreapSolmu(2);
+        tr.lisaaSolmu(s1);        
+        tr.lisaaSolmu(s2);
+        TreapSolmu expResult = null;
+        TreapSolmu result = tr.hae(1);
+        assertEquals(expResult, result);
+    }   
+
+
+    @Test
+    public void testLisaa() {
+        System.out.println("lisaa");
+        int avain = 5;
+        tr.lisaa(avain);
+        tr.tulosta(tr.getJuuri());
+        int expResult = avain;
+        int result = tr.getJuuri().getAvain();
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testPoistaTesti1() {
+        System.out.println("poista, testi1");
+        tr.lisaa(3);
+        tr.lisaa(4);
+        tr.lisaa(1);
+        tr.tulosta(tr.getJuuri());
+        tr.poista(3);
+        tr.tulosta(tr.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  tr.hae(3);
+        assertEquals(expResult, result);
+    }
     
+    @Test
+    public void testPoistaTesti2() {
+        System.out.println("poista, testi2");
+        tr.lisaa(3);
+        tr.lisaa(4);
+        tr.lisaa(1);
+        tr.tulosta(tr.getJuuri());
+        tr.poista(1);
+        tr.tulosta(tr.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  tr.hae(1);
+        assertEquals(expResult, result);
+    }
+ 
+    @Test
+    public void testPoistaTesti3() {
+        System.out.println("poista, testi 3");
+        tr.lisaa(3);
+        tr.lisaa(4);
+        tr.lisaa(6);
+        tr.lisaa(1);
+        tr.tulosta(tr.getJuuri());
+        tr.poista(4);
+        tr.tulosta(tr.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  tr.hae(4);
+        assertEquals(expResult, result);
+    }
 }

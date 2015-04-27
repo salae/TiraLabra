@@ -4,7 +4,10 @@ package vertailu;
 import java.util.Random;
 
 /**
- *
+ * Treapin solmu.
+ * 
+ * Lisää perussolmuun satunnaisen prioriteettiluvun.
+ * 
  * @author Anu
  */
 public class TreapSolmu extends Solmu{

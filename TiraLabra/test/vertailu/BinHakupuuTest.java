@@ -107,6 +107,7 @@ public class BinHakupuuTest {
     @Test
     public void testPoista2lasta() {
         System.out.println("poista, kaksi lasta");
+        bin.tulosta(bin.getJuuri());
         bin.lisaa(3);
         bin.lisaa(4);
         bin.lisaa(1);
@@ -160,5 +161,18 @@ public class BinHakupuuTest {
         assertEquals(expResult,result);
 
     }
-
+    @Test
+    public void testTyhjennaPuu() {
+        System.out.println("tyhjnnä puu");
+        bin.lisaa(3);
+        bin.lisaa(4);
+        bin.lisaa(6);
+        bin.lisaa(1);
+        bin.tulosta(bin.getJuuri());
+        bin.tyhjennaPuu(bin.getJuuri());
+        bin.tulosta(bin.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  bin.getJuuri();
+        assertEquals(expResult, result);
+    }
 }

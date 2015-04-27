@@ -35,43 +35,39 @@ public class PunamustaPuuTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testLisaaSolmu() {
-        System.out.println("lisaa Solmu");
-        PmSolmu s1= new PmSolmu(3,true);
-        PmSolmu s2 = new PmSolmu (4,true);
-        pmPuu.lisaaSolmu(s1);
-        pmPuu.lisaaSolmu(s2);
-        System.out.println(s1);
-        pmPuu.tulosta(pmPuu.getJuuri());
-        Solmu expResult = s1;
-        Solmu result = pmPuu.getJuuri();
+     @Test
+    public void testGetJuuriNil() {
+        System.out.println("getJuuriNil");
+        int expResult = -1;
+        int result = pmPuu.getJuuri().getAvain();
         assertEquals(expResult, result);
-    }    
-    
-    /**
-     * Test of hae method, of class PunamustaPuu.
-     */
+    }
+    @Test
+    public void testGetJuuriNotNull() {
+        System.out.println("getJuuriNotNull");
+        pmPuu.lisaa(4);
+        int expResult = 4;
+        int result = pmPuu.getJuuri().getAvain();
+        assertEquals(expResult, result);
+    }
+
     @Test
     public void testHaeLoytyy() {
         System.out.println("hae, loytyy");
-        PmSolmu s1 = new PmSolmu(4,true);
-        PmSolmu s2 = new PmSolmu(2,true);
-        pmPuu.lisaaSolmu(s1);        
-        pmPuu.lisaaSolmu(s2);
+        pmPuu.lisaa(4); 
+        System.out.println(pmPuu.getJuuri());
+        pmPuu.lisaa(2);
         pmPuu.tulosta(pmPuu.getJuuri());
-        Solmu expResult = s2;
-        Solmu result = pmPuu.hae(2);
+        int expResult = 2;
+        int result = pmPuu.hae(2).getAvain();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testHaeEiLoydy() {
         System.out.println("hae, ei loydy");
-        PmSolmu s1 = new PmSolmu(4,true);
-        PmSolmu s2 = new PmSolmu(2,true);
-        pmPuu.lisaaSolmu(s1);        
-        pmPuu.lisaaSolmu(s2);
+        pmPuu.lisaa(4);        
+        pmPuu.lisaa(2);
         Solmu expResult = null;
         Solmu result = pmPuu.hae(1);
         assertEquals(expResult, result);
@@ -79,22 +75,32 @@ public class PunamustaPuuTest {
 
     @Test
     public void testLisaa() {
+        //käyty lisäksi paperin ja kynän kanssa läpi :)
         System.out.println("lisaa");
         int avain = 1;
         pmPuu.lisaa(avain);
-        Solmu expResult = pmPuu.getJuuri();
-        Solmu result = pmPuu.hae(avain);
+        pmPuu.lisaa(7);
+        pmPuu.lisaa(5);
+        pmPuu.tulosta(pmPuu.getJuuri()); 
+        String expResult = "5 (musta)";
+        String result =  pmPuu.getJuuri().toString();
         assertEquals(expResult, result);
     }
 
-//    @Test
-//    public void testPoista() {
-//        System.out.println("poista");
-//        int avain = 0;
-//        PunamustaPuu instance = new PunamustaPuu();
-//        instance.poista(avain);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testPoista() {
+        System.out.println("poista");
+        pmPuu.lisaa(3);
+        pmPuu.lisaa(4);
+        pmPuu.lisaa(6);
+        pmPuu.lisaa(1);
+        pmPuu.tulosta(pmPuu.getJuuri());
+        pmPuu.poista(4);
+        pmPuu.tulosta(pmPuu.getJuuri());
+        Solmu expResult = null;
+        Solmu result =  pmPuu.hae(4);
+        assertEquals(expResult, result);
+
+    }
     
 }

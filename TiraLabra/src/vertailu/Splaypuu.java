@@ -1,7 +1,7 @@
 package vertailu;
 
 /**
- * Splaypuu on tasapainotettu binäärihkupuu, jonka erityisominaisuus on 
+ * Splaypuu on tasapainotettu binäärihakupuu, jonka erityisominaisuus on 
  * mukautuminen. Avainkysely nostaa kysytyn solmun puun juureksi, jolloin
  * peräkkäiset samoihin avaimiin kodistuvat operaatiot ovat nopeita.
  * 

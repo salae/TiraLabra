@@ -45,19 +45,6 @@ public class Puuvertailu {
         valittu.trim();
         return valittu;        
     }
-    /**
-     * Alustaa puut, niin että niissä on valmiina tietoalkioita.
-     */
-    private static void alustaPuut(){
-        //ei vielä lopullinen versio
-        for(int i=1; i <= 100; i++){
-           binaari.lisaa(i);
-           punamusta.lisaa(i);
-           viisto.lisaa(i);
-        }  
-        System.out.println("Puissa on aluksi valmiina luvut 1-100.");
-        System.out.println();
-    }
 
     //vasta alustava kokeilu, kantsii ehkä tehdä oma luokka näille vertailuille
     private static void vertaileLisays(){        
@@ -74,47 +61,47 @@ public class Puuvertailu {
 //////                pmKulunutAika + " millisekuntia ja splaypuussa "+               
 //////                vKulunutAika + " millisekuntia." );
     }
-    /**
-     * Lisää puuhun halutun määrän satunnaisia kokonaislukuja 
-     * väliltä 1 - määritelty suurin luku.
-     * 
-     * @param p puu, johon lisäykset tehdään
-     * @param lkm lisättävien lukujen määrä
-     * @param suurin suurin lisättävä luku
-     * @return aika, joka lisäyksiin on kulunut millisekunteina
-     */
-    private static Long teeLisays(Puu p, int lkm, int suurin){
-        
-        Long alkuAika = System.currentTimeMillis();
-        Random r = new Random();
-
-        for(int i=0; i < lkm; i++) {
-            int luku = r.nextInt(suurin-1)+1;
-             p.lisaa(luku);
-        }
-        return System.currentTimeMillis() - alkuAika;    
-    }
-    
-    /**
-     * Hakee puusta halutun määrän satunnaisia lukuja.
-     * 
-     * @param p puu, josta haut tehdään
-     * @param lkm haettavien lukujen määrä
-     * @param suurin suurin haettava luku
-     * @return aika, joka hakemiseen on kulunut millisekunteina
-     */
-     private static Long haeLukuja(Puu p, int lkm, int suurin){
-        
-        Long alkuAika = System.currentTimeMillis();
-        Random r = new Random();
-
-        for(int i=0; i < lkm; i++) {
-            int luku = r.nextInt(suurin-1)+1;
-             p.hae(luku);
-        }
-        return System.currentTimeMillis() - alkuAika;    
-    }   
-    
+//    /**
+//     * Lisää puuhun halutun määrän satunnaisia kokonaislukuja 
+//     * väliltä 1 - määritelty suurin luku.
+//     * 
+//     * @param p puu, johon lisäykset tehdään
+//     * @param lkm lisättävien lukujen määrä
+//     * @param suurin suurin lisättävä luku
+//     * @return aika, joka lisäyksiin on kulunut millisekunteina
+//     */
+//    private static Long teeLisays(Puu p, int lkm, int suurin){
+//        
+//        Long alkuAika = System.currentTimeMillis();
+//        Random r = new Random();
+//
+//        for(int i=0; i < lkm; i++) {
+//            int luku = r.nextInt(suurin-1)+1;
+//             p.lisaa(luku);
+//        }
+//        return System.currentTimeMillis() - alkuAika;    
+//    }
+//    
+//    /**
+//     * Hakee puusta halutun määrän satunnaisia lukuja.
+//     * 
+//     * @param p puu, josta haut tehdään
+//     * @param lkm haettavien lukujen määrä
+//     * @param suurin suurin haettava luku
+//     * @return aika, joka hakemiseen on kulunut millisekunteina
+//     */
+//     private static Long haeLukuja(Puu p, int lkm, int suurin){
+//        
+//        Long alkuAika = System.currentTimeMillis();
+//        Random r = new Random();
+//
+//        for(int i=0; i < lkm; i++) {
+//            int luku = r.nextInt(suurin-1)+1;
+//             p.hae(luku);
+//        }
+//        return System.currentTimeMillis() - alkuAika;    
+//    }   
+//    
     //tekemättä
     private static void vertailePoisto(){
         System.out.println("Vertaillaan poistoa.");
@@ -128,9 +115,9 @@ public class Puuvertailu {
         
         System.out.println("Lisätään 10 000 satunnaista lukua väliltä 1-100 puihin.");
         
-        Long binLisAika1 = teeLisays(binaari,10000,100);   
-        Long pmLisAika1 = teeLisays(punamusta,10000,100);
-        Long vLisAika1 = teeLisays(viisto,10000,100);  
+        Long binLisAika1 = Toimintoja.teeLisays(binaari,10000,100);   
+        Long pmLisAika1 = Toimintoja.teeLisays(punamusta,10000,100);
+        Long vLisAika1 = Toimintoja.teeLisays(viisto,10000,100);  
 //        Long tLisAika1 = teeLisays(puukeko,10000,100); 
         
         System.out.println();
@@ -143,9 +130,9 @@ public class Puuvertailu {
         
          System.out.println("haetaan 1000 satunnaista lukua väliltä 1-100 puihin.");
         
-        binLisAika1 = haeLukuja(binaari,1000,100);   
-        pmLisAika1 = haeLukuja(punamusta,1000,100);
-        vLisAika1 = haeLukuja(viisto,1000,100);  
+        binLisAika1 = Toimintoja.haeLukuja(binaari,1000,100);   
+        pmLisAika1 = Toimintoja.haeLukuja(punamusta,1000,100);
+        vLisAika1 = Toimintoja.haeLukuja(viisto,1000,100);  
 //        tLisAika1 = teeLisays(puukeko,10000,100); 
         
         System.out.println();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Anu-PC" name="vertailu.TreapSolmuTest" skipped="0" tests="1" time="0.172" timestamp="2015-04-27T05:25:49">
+<testsuite errors="0" failures="0" hostname="Anu-PC" name="vertailu.TreapTest" skipped="0" tests="6" time="0.397" timestamp="2015-04-27T05:25:51">
   <properties>
     <property name="netbeans.autoupdate.country" value="FI" />
     <property name="nb.wait.for.caches" value="true" />
@@ -40,7 +40,7 @@
     <property name="user.name" value="Anu" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner vertailu.TreapSolmuTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Anu\TiraLabra\TiraLabra\build\test\results\TEST-vertailu.TreapSolmuTest.xml crashfile=C:\Users\Anu\TiraLabra\TiraLabra\build\junitvmwatcher6066168268300740447.properties propsfile=C:\Users\Anu\TiraLabra\TiraLabra\build\junit1217210311709284722.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner vertailu.TreapTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Anu\TiraLabra\TiraLabra\build\test\results\TEST-vertailu.TreapTest.xml crashfile=C:\Users\Anu\TiraLabra\TiraLabra\build\junitvmwatcher6688551859064852369.properties propsfile=C:\Users\Anu\TiraLabra\TiraLabra\build\junit1476914953656853493.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="ant.file.TiraLabra" value="C:\Users\Anu\TiraLabra\TiraLabra\build.xml" />
     <property name="build.sysclasspath" value="ignore" />
@@ -301,10 +301,38 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="vertailu.TreapSolmuTest" name="testToString" time="0.0" />
-  <system-out><![CDATA[toString
-3 (1805859752)
-3 (512)
+  <testcase classname="vertailu.TreapTest" name="testLisaa" time="0.005" />
+  <testcase classname="vertailu.TreapTest" name="testHaeLoytyy" time="0.0" />
+  <testcase classname="vertailu.TreapTest" name="testHaeEiLoydy" time="0.001" />
+  <testcase classname="vertailu.TreapTest" name="testPoistaTesti1" time="0.0" />
+  <testcase classname="vertailu.TreapTest" name="testPoistaTesti2" time="0.004" />
+  <testcase classname="vertailu.TreapTest" name="testPoistaTesti3" time="0.001" />
+  <system-out><![CDATA[lisaa
+5 (-1626746519)
+hae, loytyy
+2 (797511633)
+4 (1992905950)
+hae, ei loydy
+poista, testi1
+1 (1045119556)
+3 (1782479436)
+4 (-979656811)
+1 (1045119556)
+4 (-979656811)
+poista, testi2
+1 (-1746764368)
+3 (-922082411)
+4 (-730239378)
+3 (-922082411)
+4 (-730239378)
+poista, testi 3
+1 (-48767269)
+3 (562321241)
+4 (1382192434)
+6 (-1532637576)
+1 (-48767269)
+3 (562321241)
+6 (-1532637576)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
