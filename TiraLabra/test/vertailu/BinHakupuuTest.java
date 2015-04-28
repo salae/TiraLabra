@@ -163,7 +163,7 @@ public class BinHakupuuTest {
     }
     @Test
     public void testTyhjennaPuu() {
-        System.out.println("tyhjnnä puu");
+        System.out.println("tyhjennä puu");
         bin.lisaa(3);
         bin.lisaa(4);
         bin.lisaa(6);

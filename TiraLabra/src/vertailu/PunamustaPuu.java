@@ -116,7 +116,13 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
             s = s.getVasenLapsi();
         }        
         return s;
-    }    
+    } 
+    
+    @Override
+    public void tyhjennaPuu(Solmu s) {
+        this.setJuuri(nil);
+    }
+        
     /**
      * Vaihtaa yhden alipuun tilalle toisen.
      * 
@@ -294,5 +300,6 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
            tulosta(s.getOikeaLapsi());
         }
     } 
+    
 }
 

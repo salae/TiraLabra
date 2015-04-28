@@ -31,6 +31,15 @@ public interface Puu {
      */
     public void poista(int avain);
     
+     /**
+     * Tyhjentää annetusta solmusta alkavan alipuun.
+     * 
+     * Poistaa kaikki puun solmut.
+     * 
+     * @param s juuri, josta alkava alipuu tyhjennetään
+     */
+    public void tyhjennaPuu(Solmu s);   
+    
 //  Mietin vielä tarvitaanko seuraavia
 //    public String tulostaPuu();
 //    public int haeMin();

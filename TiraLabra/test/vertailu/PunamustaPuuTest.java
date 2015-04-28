@@ -86,7 +86,16 @@ public class PunamustaPuuTest {
         String result =  pmPuu.getJuuri().toString();
         assertEquals(expResult, result);
     }
-
+    @Test
+    public void testhaeMin() {
+        System.out.println("minimi");
+        pmPuu.lisaa(5);
+        pmPuu.lisaa(1);
+        pmPuu.lisaa(2);
+        int expResult = 1;
+        int result = pmPuu.haeMin(pmPuu.getJuuri()).getAvain();
+        assertEquals(expResult, result);
+    }
     @Test
     public void testPoista() {
         System.out.println("poista");
@@ -94,13 +103,29 @@ public class PunamustaPuuTest {
         pmPuu.lisaa(4);
         pmPuu.lisaa(6);
         pmPuu.lisaa(1);
-        pmPuu.tulosta(pmPuu.getJuuri());
-        pmPuu.poista(4);
+        pmPuu.tulosta(pmPuu.getJuuri());        
+        pmPuu.poista(4);        
         pmPuu.tulosta(pmPuu.getJuuri());
         Solmu expResult = null;
         Solmu result =  pmPuu.hae(4);
         assertEquals(expResult, result);
 
     }
-    
+     @Test
+    public void testTyhjennaPuu() {
+        System.out.println("tyhjennä puu");
+        pmPuu.lisaa(3);
+        pmPuu.lisaa(4);
+        pmPuu.lisaa(6);
+        pmPuu.lisaa(1);
+        pmPuu.tulosta(pmPuu.getJuuri());
+        System.out.println("juuri ennen" + pmPuu.getJuuri());
+        pmPuu.tyhjennaPuu(pmPuu.getJuuri());
+        System.out.println("juuri jälkeen" + pmPuu.getJuuri());
+        pmPuu.tulosta(pmPuu.getJuuri());
+        int expResult = -1;
+        int result =  pmPuu.getJuuri().getAvain();
+        assertEquals(expResult, result);
+
+    }   
 }
