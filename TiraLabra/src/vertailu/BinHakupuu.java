@@ -93,16 +93,6 @@ public class BinHakupuu implements Puu{
      * @param pois poistettava solmu 
      */
     public void poistaSolmu(Solmu pois){
-        //tarvitsee virittelyä
-        if(pois.getVasenLapsi() == null && pois.getOikeaLapsi() == null){
-            if(pois.getVanhempi() == null){
-                this.setJuuri(null);
-            }else if(pois == pois.getVanhempi().getVasenLapsi()){
-                pois.getVanhempi().setVasenLapsi(null);
-            }else {
-                pois.getVanhempi().setOikeaLapsi(null);
-            }
-        } else
         if(pois.getVasenLapsi() == null){
             this.vaihdaAlipuuta(pois, pois.getOikeaLapsi());
         }else if(pois.getOikeaLapsi() == null){

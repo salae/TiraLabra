@@ -53,7 +53,7 @@ public class Puuvertailu {
     public static void main(String[] args) {
         
         String valinta = ""; 
-        int[] lukumaarat = {20000,100000,200000};
+        int[] lukumaarat = {20000,50000,100000};
         int[] lukumaarat2 = {2000,10000,20000};
         Vertailu v = new Vertailu();
         
@@ -69,7 +69,7 @@ public class Puuvertailu {
                     v.vertailePoisto(lukumaarat,1000 ,5);
                     break;
                 case "3":
-                    v.vertaileHaku(lukumaarat,10000,5);
+                    v.vertaileHaku(lukumaarat,1000,5);
                     break;
 //                case "4":
 //                    valmiitTestit();

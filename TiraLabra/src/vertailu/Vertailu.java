@@ -110,15 +110,15 @@ public class Vertailu {
     */
     public void vertailePoisto(int[] maarat , int maxi, int kertaa){  
         Long[] ajat = new Long[4];
-        puut = new Puu[3];
+        puut = new Puu[1];
         this.puut[0]= this.binaari;
-        this.puut[1] = this.viisto;
-       this.puut[2] = this.puukeko;
+//        this.puut[1] = this.viisto;
+//       this.puut[1] = this.puukeko;
 
         
         System.out.println("Vertaillaan poistoa.");
-//        alustaPuut(100000,10000);
-        alustaPuut(100,50);
+        alustaPuut(100000,10000);
+//        alustaPuut(100,50);
         System.out.println("Koska luvut pitää ensin hakea, käytännössä on kyseessä haku + poisto.");
         
         for(int i = 0; i < maarat.length; i++){
@@ -197,7 +197,8 @@ public class Vertailu {
         Long[] ajat = new Long[4];
         
         System.out.println("Vertaillaan hakua.");
-        alustaPuut(500000,1000);
+        alustaPuut(100000,1000);
+//        alustaPuut(10,10);
         
         for(int i = 0; i < maarat.length; i++){
             System.out.println("Haetaan " + maarat[i] +" satunnaista lukua väliltä 1-"+maxi+" puista.");
@@ -212,8 +213,9 @@ public class Vertailu {
         
         System.out.println(); 
         }
-        
-      System.out.println();             
+        for(int i=0; i< this.puut.length; i++){
+            puut[i].tyhjennaPuu(((BinHakupuu)puut[i]).getJuuri());
+        }          
 
     }   
     
@@ -252,6 +254,7 @@ public class Vertailu {
         if(p.getClass().getSimpleName().length() < 8){System.out.print("\t");}
         for(int i = 0; i < kierros; i++){
             Long aika = teeLisays(p,lkm,suurin);
+//    ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());         
             System.out.print(aika + "\t");
             ka += aika;
             p.tyhjennaPuu(((BinHakupuu)p).getJuuri());            
@@ -269,13 +272,16 @@ public class Vertailu {
      * @return aika, joka hakemiseen on kulunut millisekunteina
      */
      public Long haeLukuja(Puu p, int lkm, int suurin){
-        
+//  ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());   
+//        Long alkuAika = System.currentTimeMillis();
         Long alkuAika = System.currentTimeMillis();
         Random r = new Random();
 
         for(int i=0; i < lkm; i++) {
             int luku = r.nextInt(suurin-1)+1;
+//    System.out.println(luku);
              p.hae(luku);
+//       System.out.println(p.hae(luku));
         }
         return System.currentTimeMillis() - alkuAika;    
     } 
@@ -359,9 +365,5 @@ public class Vertailu {
              this.teeLisays(puut[i], lkm, suurin);
          }
        
-//        teeLisays(binaari, lkm, suurin);
-//        teeLisays(punamusta, lkm, suurin);
-//        teeLisays(viisto, lkm, suurin);
-//        teeLisays(puukeko, lkm, suurin);        
     } 
 }
