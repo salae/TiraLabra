@@ -26,7 +26,7 @@ public class BinHakupuu implements Puu{
      * @return puun juuri
      */
     public Solmu getJuuri() {
-        return juuri;
+        return this.juuri;
     }
 
     /**
@@ -71,15 +71,27 @@ public class BinHakupuu implements Puu{
             x = (uusi.getAvain() < x.getAvain()) ? x.getVasenLapsi() :  x.getOikeaLapsi();            
         }
         uusi.setVanhempi(p);
-        if(p == null){
-            this.setJuuri(uusi);
-        }else if(uusi.getAvain() < p.getAvain()){
-            p.setVasenLapsi(uusi);
-        } else {
-            p.setOikeaLapsi(uusi);
-        }    
+        asetaVanhempiLapsiSuhde(uusi, p);
+  
     }
 
+    /**
+     * Asettaa lapsi-solmun oikelle puolelle vanhempaan nähden. 
+     * Jos vanhempi on null, tehdään lapsesta juuri.
+     * 
+     * @param lapsi
+     * @param vanhempi 
+     */
+    protected void asetaVanhempiLapsiSuhde(Solmu lapsi, Solmu vanhempi){
+        if(vanhempi == null){
+            this.setJuuri(lapsi);
+        }else if(lapsi.getAvain() < vanhempi.getAvain()){
+            vanhempi.setVasenLapsi(lapsi);
+        } else {
+            vanhempi.setOikeaLapsi(lapsi);
+        }  
+    }
+    
     @Override
     public void poista(int avain) {
         Solmu pois = this.hae(avain);
@@ -145,10 +157,26 @@ public class BinHakupuu implements Puu{
         }        
         return s;
     }
-   
+    
+     /**
+     * Palauttaa solmun, jolla on arvoltaan suurin avain.
+     * 
+     * Suurimman arvon etsintä koskee alipuuta, jonka juuri annetaan parametrinä.
+     * Suurimpia arvoja voi olla useita, joista yksi palautetaan. Jos puu on
+     * tyhjä, palautetaan null.
+     * 
+     * @param s sen puun juuri, josta suurinta arvoa haetaan
+     * @return suurimman avaimen omaava solmu
+     */
+    public Solmu haeMax(Solmu s){
+        while(s.getOikeaLapsi() != null){
+            s = s.getOikeaLapsi();
+        }        
+        return s;
+    }
+    
     @Override
     public void tyhjennaPuu(Solmu s) {
-//        this.setJuuri(null);
         if (s != null) {
            tyhjennaPuu(s.getVasenLapsi());
            poistaSolmu(s);

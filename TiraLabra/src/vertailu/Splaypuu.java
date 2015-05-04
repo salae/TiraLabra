@@ -49,7 +49,9 @@ public class Splaypuu extends BinHakupuu implements Puu{
      */
     public void poista(int avain){
         Solmu pois = this.hae(avain); //splay toteutuu jo täällä
-        this.poistaSolmu(pois);
+        if(pois != null){
+           this.poistaSolmu(pois); 
+        }        
     }   
 
     /**

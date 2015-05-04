@@ -65,8 +65,7 @@ public class Vertailu {
 
     public void setPuut(Puu[] puut) {
         this.puut = puut;
-    }
-   
+    }   
    
    /**
     * Vertailee tietoalkioiden lisäykseen kuluvaa aikaa.
@@ -78,10 +77,8 @@ public class Vertailu {
     * @param kertaa kuinka monta kertaa lisäys toistetaan
     */
     public void vertaileLisays(int[] maarat , int maxi, int kertaa){  
-        Long[] ajat = new Long[4];
-        
-        System.out.println("Vertaillaan lisäystä.");
-        
+        Long[] ajat = new Long[4];        
+        System.out.println("Vertaillaan lisäystä.");        
         for(int i = 0; i < maarat.length; i++){
             System.out.println("Lisätään " + maarat[i] +" satunnaista lukua väliltä 1-"+maxi+" puihin.");
             System.out.println();        
@@ -91,14 +88,12 @@ public class Vertailu {
         System.out.println();
         System.out.println("Lukujen lisäykseen meni aikaa binäärihakupuussa keskimäärin " + ajat[0] +",");
         System.out.println("punamustassa puussa "+ ajat[1] + ",");
-        System.out.println("splaypuussa "+ ajat[2] + " ja treapissa "+ ajat[3] + " millisekuntia." );
-        
+        System.out.println("splaypuussa "+ ajat[2] + " ja treapissa "+ ajat[3] + " millisekuntia." );        
         System.out.println(); 
-        }
-        
-      System.out.println();             
-
+        }        
+        System.out.println(); 
     }
+    
     /**
     * Vertailee tietoalkioiden poistamiseen kuluvaa aikaa.
     * 
@@ -110,10 +105,10 @@ public class Vertailu {
     */
     public void vertailePoisto(int[] maarat , int maxi, int kertaa){  
         Long[] ajat = new Long[4];
-        puut = new Puu[1];
+        puut = new Puu[3];
         this.puut[0]= this.binaari;
-//        this.puut[1] = this.viisto;
-//       this.puut[1] = this.puukeko;
+        this.puut[1] = this.viisto;
+        this.puut[2] = this.puukeko;
 
         
         System.out.println("Vertaillaan poistoa.");
@@ -133,57 +128,11 @@ public class Vertailu {
         System.out.println("splaypuussa "+ ajat[2] + " ja treapissa "+ ajat[3] + " millisekuntia." );
         
         System.out.println(); 
-        }
-        
+        }        
       System.out.println();             
 
     }      
-//    public void vertailePoisto(){
-//        System.out.println("Vertaillaan poistoa.");
-//        System.out.println("Koska luvut pitää ensin hakea, käytännössä on kyseessä haku + poisto.");
-//        alustaPuut(10000,1000);
-//        System.out.println("Poistetaan 10000 satunnaista lukua väliltä 1-1000 puista.");
-//        
-//        Long binLisAika1 = Toimintoja.laskePoistojenKeskiarvo(binaari, 10000,1000,5);   
-////        Long pmLisAika1 = Toimintoja.laskePoistojenKeskiarvo(punamusta,10000,1000,5);
-//        Long vLisAika1 = Toimintoja.laskePoistojenKeskiarvo(viisto,10000,1000,5);  
-//        Long tLisAika1 = Toimintoja.laskePoistojenKeskiarvo(puukeko,10000,1000,5); 
-//        
-//        System.out.println();
-//        System.out.println("Lukujen hakuun meni aikaa binäärihakupuussa keskimäärin " + binLisAika1 +",");
-////        System.out.println("punamustassa puussa "+ pmLisAika1 + ",");
-//        System.out.println("splaypuussa "+ vLisAika1 + " ja treapissa "+ tLisAika1 + " millisekuntia." );
-//        
-//        System.out.println();        
-//        
-//        System.out.println("Poistetaan 50000 satunnaista lukua väliltä 1-1000 puista.");
-//        
-//        binLisAika1 = Toimintoja.laskePoistojenKeskiarvo(binaari, 50000,1000,5);   
-////        pmLisAika1 = Toimintoja.laskePoistojenKeskiarvo(punamusta,50000,1000,5);
-//        vLisAika1 = Toimintoja.laskePoistojenKeskiarvo(viisto,50000,1000,5);  
-//        tLisAika1 = Toimintoja.laskePoistojenKeskiarvo(puukeko,50000,1000,5); 
-//        
-//        System.out.println();
-//        System.out.println("Lukujen poistoon meni aikaa binäärihakupuussa keskimäärin " + binLisAika1 +",");
-////        System.out.println("punamustassa puussa "+ pmLisAika1 + ",");
-//        System.out.println("splaypuussa "+ vLisAika1 + " ja treapissa "+ tLisAika1 + " millisekuntia." );
-//        
-//        System.out.println();      
-//        
-//        System.out.println("Haetaan  100 000 satunnaista lukua väliltä 1-1000 puista.");
-//        
-//        binLisAika1 = Toimintoja.laskePoistojenKeskiarvo(binaari, 100000,1000,5);   
-////        pmLisAika1 = Toimintoja.laskePoistojenKeskiarvo(punamusta,100000,1000,5);
-//        vLisAika1 = Toimintoja.laskePoistojenKeskiarvo(viisto,100000,1000,5);  
-//        tLisAika1 = Toimintoja.laskePoistojenKeskiarvo(puukeko,100000,1000,5); 
-//        
-//        System.out.println();
-//        System.out.println("Lukujen poistoon meni aikaa binäärihakupuussa keskimäärin " + binLisAika1 +",");
-////        System.out.println("punamustassa puussa "+ pmLisAika1 + ",");
-//        System.out.println("splaypuussa "+ vLisAika1 + " ja treapissa "+ tLisAika1 + " millisekuntia." );
-//        
-//        System.out.println();     
-//    }
+
     /**
     * Vertailee tietoalkioiden hakemiseen kuluvaa aikaa.
     * 
@@ -194,12 +143,9 @@ public class Vertailu {
     * @param kertaa kuinka monta kertaa haut toistetaan
     */
     public void vertaileHaku(int[] maarat , int maxi, int kertaa){  
-        Long[] ajat = new Long[4];
-        
+        Long[] ajat = new Long[4];        
         System.out.println("Vertaillaan hakua.");
-        alustaPuut(100000,1000);
-//        alustaPuut(10,10);
-        
+        alustaPuut(100000,1000);        
         for(int i = 0; i < maarat.length; i++){
             System.out.println("Haetaan " + maarat[i] +" satunnaista lukua väliltä 1-"+maxi+" puista.");
             System.out.println();        
@@ -209,14 +155,12 @@ public class Vertailu {
         System.out.println();
         System.out.println("Lukujen hakuun meni aikaa binäärihakupuussa keskimäärin " + ajat[0] +",");
         System.out.println("punamustassa puussa "+ ajat[1] + ",");
-        System.out.println("splaypuussa "+ ajat[2] + " ja treapissa "+ ajat[3] + " millisekuntia." );
-        
+        System.out.println("splaypuussa "+ ajat[2] + " ja treapissa "+ ajat[3] + " millisekuntia." );        
         System.out.println(); 
         }
         for(int i=0; i< this.puut.length; i++){
             puut[i].tyhjennaPuu(((BinHakupuu)puut[i]).getJuuri());
-        }          
-
+        } 
     }   
     
      /**
@@ -253,8 +197,7 @@ public class Vertailu {
         System.out.print(p.getClass().getSimpleName()+ "\t");
         if(p.getClass().getSimpleName().length() < 8){System.out.print("\t");}
         for(int i = 0; i < kierros; i++){
-            Long aika = teeLisays(p,lkm,suurin);
-//    ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());         
+            Long aika = teeLisays(p,lkm,suurin);     
             System.out.print(aika + "\t");
             ka += aika;
             p.tyhjennaPuu(((BinHakupuu)p).getJuuri());            
@@ -272,16 +215,12 @@ public class Vertailu {
      * @return aika, joka hakemiseen on kulunut millisekunteina
      */
      public Long haeLukuja(Puu p, int lkm, int suurin){
-//  ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());   
-//        Long alkuAika = System.currentTimeMillis();
         Long alkuAika = System.currentTimeMillis();
         Random r = new Random();
 
         for(int i=0; i < lkm; i++) {
             int luku = r.nextInt(suurin-1)+1;
-//    System.out.println(luku);
-             p.hae(luku);
-//       System.out.println(p.hae(luku));
+            p.hae(luku);
         }
         return System.currentTimeMillis() - alkuAika;    
     } 
@@ -348,7 +287,10 @@ public class Vertailu {
         for(int i = 0; i < kierros; i++){
             Long aika = poistaLukuja(p,lkm,suurin);
             System.out.print(aika + "\t");
-            ka += aika;            
+            ka += aika;  
+            p.tyhjennaPuu(((BinHakupuu)p).getJuuri()); 
+            //tälle pitää tehdä vielä jotain, eri operaatiot numerokoodeiksi vaikka
+            this.alustaPuut(100000, 10000);
         } 
         System.out.println();
         return ka/kierros;
@@ -357,6 +299,8 @@ public class Vertailu {
      /**
      * Laittaa puihin valmiiksi tietoalkioita.
      * 
+     * @param lkm lisättävien solmujen määrä
+     * @param suurin suurin mahdollinen avaimen arvo
      */
     public void alustaPuut(int lkm, int suurin){
          System.out.println("Puissa on valmiina " + lkm + " satunnaista lukua väliltä 1-" + suurin +".");

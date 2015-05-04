@@ -29,7 +29,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
                 x = (PmSolmu) x.getOikeaLapsi();
             }
         }
-        if(x == this.nil){ x = null;} //ohjelman yhtenäisen logiikan takia
+//        if(x == this.nil){ x = null;} //ohjelman yhtenäisen logiikan takia
         return x;
     }
     
@@ -80,6 +80,15 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      */
     public void poista(int avain) {
         PmSolmu pois = this.hae(avain);
+        if(pois != nil){
+            poistaSolmu(pois);
+        }        
+    }
+    
+    private void poistaSolmu(PmSolmu pois){
+        if(pois == nil){
+            return;
+        }
         PmSolmu y = pois;
         PmSolmu x;
         boolean yOrigVari = y.onkoPunainen();
@@ -239,7 +248,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      */
     private void korjaaPoisto(PmSolmu x) {
         while(x != this.getJuuri() && !x.onkoPunainen()){
-            PmSolmu sisar;
+            PmSolmu sisar = null;
             if(x == x.getVanhempi().getVasenLapsi()){
                 sisar = (PmSolmu) x.getVanhempi().getOikeaLapsi();
                 if(sisar.onkoPunainen()){

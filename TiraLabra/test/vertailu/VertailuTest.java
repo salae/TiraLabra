@@ -131,8 +131,8 @@ public class VertailuTest {
         System.out.println("poistaLukuja");
         v.alustaPuut(10, 15);
 //        Puu p = v.getViisto();
-//        Puu p = v.getPunamusta();
-        Puu p = v.getBinaari();
+        Puu p = v.getPunamusta();
+//        Puu p = v.getBinaari();
 //        Puu p = v.getPuukeko();
         int lkm = 5;
         int suurin = 15;

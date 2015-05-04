@@ -29,7 +29,7 @@ public class Solmu implements Comparable<Solmu>{
      * @return solmun avain
      */
     public int getAvain() {
-        return avain;
+        return this.avain;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Solmu implements Comparable<Solmu>{
      * @return solmun vasen lapsi
      */
     public Solmu getVasenLapsi() {
-        return vasenLapsi;
+        return this.vasenLapsi;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Solmu implements Comparable<Solmu>{
      * @return solmun oikea lapsi
      */
     public Solmu getOikeaLapsi() {
-        return oikeaLapsi;
+        return this.oikeaLapsi;
     }
 
     /**
@@ -83,7 +83,7 @@ public class Solmu implements Comparable<Solmu>{
      * @return solmun vanhempi
      */
     public Solmu getVanhempi() {
-        return vanhempi;
+        return this.vanhempi;
     }
 
     /**

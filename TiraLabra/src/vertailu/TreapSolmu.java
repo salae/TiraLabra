@@ -29,7 +29,7 @@ public class TreapSolmu extends Solmu{
      * @return prioriteetti
      */
     public int getPrioriteetti() {
-        return prioriteetti;
+        return this.prioriteetti;
     }
     /**
      * Asettaa solmulle prioriteetin

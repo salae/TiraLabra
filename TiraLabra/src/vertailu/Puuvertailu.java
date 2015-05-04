@@ -1,6 +1,5 @@
 package vertailu;
 
-//import java.util.Random;
 import java.util.Scanner;
 /**
  * Luokan tarkoituksena on vertailla erilaisia puurakenteita ja
@@ -13,11 +12,6 @@ import java.util.Scanner;
 public class Puuvertailu {
     
    private static Scanner lukija = new Scanner(System.in);
-    
-//   private static Puu binaari = new BinHakupuu();
-//   private static PunamustaPuu punamusta = new PunamustaPuu();
-//   private static Splaypuu viisto = new Splaypuu();
-//   private static Treap puukeko = new Treap();
     
    /**
     * Tulostaa yleiskuvauksen ohjelmasta.
@@ -54,7 +48,7 @@ public class Puuvertailu {
         
         String valinta = ""; 
         int[] lukumaarat = {20000,50000,100000};
-        int[] lukumaarat2 = {2000,10000,20000};
+        int[] lukumaarat2 = {5,10};
         Vertailu v = new Vertailu();
         
         printtaaInfo();       
@@ -63,13 +57,13 @@ public class Puuvertailu {
            valinta = toimintaValikko();
            switch (valinta) {
                 case "1":
-                    v.vertaileLisays(lukumaarat,1000 ,5);
+                    v.vertaileLisays(lukumaarat,1000 ,10);
                     break;
                 case "2":
-                    v.vertailePoisto(lukumaarat,1000 ,5);
+                    v.vertailePoisto(lukumaarat2,1000 ,3);
                     break;
                 case "3":
-                    v.vertaileHaku(lukumaarat,1000,5);
+                    v.vertaileHaku(lukumaarat,10000,10);
                     break;
 //                case "4":
 //                    valmiitTestit();
@@ -81,7 +75,5 @@ public class Puuvertailu {
         }while (!valinta.equals("0"));
                    
     }
-
-
     
 }

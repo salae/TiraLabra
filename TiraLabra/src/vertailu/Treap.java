@@ -13,7 +13,7 @@ public class Treap extends BinHakupuu implements Puu{
      * 
      */
     public Treap() {
-        this.setJuuri(null);
+        this.juuri = null;
     }
     
     @Override

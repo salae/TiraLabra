@@ -104,6 +104,19 @@ public class BinHakupuuTest {
         assertEquals(expResult, result);
     }
     
+        @Test
+        public void testhaeMax() {
+        System.out.println("maksimi");
+        Solmu juuri = new Solmu(3);
+        bin.lisaaSolmu(juuri);
+        bin.lisaa(5);
+        bin.lisaa(1);
+        bin.lisaa(2);
+        int expResult = 5;
+        int result = bin.haeMax(juuri).getAvain();
+        assertEquals(expResult, result);
+    }
+    
     @Test
     public void testPoista2lasta() {
         System.out.println("poista, kaksi lasta");
