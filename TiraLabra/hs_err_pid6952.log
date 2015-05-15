@@ -1,0 +1,164 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_PRIV_INSTRUCTION (0xc0000096) at pc=0x0048f51c, pid=6952, tid=6668
+#
+# JRE version: 7.0_01-b08
+# Java VM: Java HotSpot(TM) Client VM (21.1-b02 mixed mode, sharing windows-x86 )
+# Problematic frame:
+# C  0x0048f51c
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x02449800):  JavaThread "main" [_thread_in_Java, id=6668, stack(0x00440000,0x00490000)]
+
+siginfo: ExceptionCode=0xc0000096
+
+Registers:
+EAX=0x345d42b8, EBX=0x345cfce0, ECX=0x29af8958, EDX=0x00000000
+ESP=0x0048f12c, EBP=0x00000004, ESI=0x246d6ea0, EDI=0x00000000
+EIP=0x0048f51c, EFLAGS=0x00010246
+
+Top of Stack: (sp=0x0048f12c)
+0x0048f12c:   024cadf0 00000000 00000004 00000000
+0x0048f13c:   00000004 246e13d0 29af8958 24701100
+0x0048f14c:   0244d738 00000000 636a573c 0048f51c
+0x0048f15c:   024cadf0 24701100 00000008 0244d738
+0x0048f16c:   24a00000 246e8270 29af8958 29dd5208
+0x0048f17c:   0048f1a0 636a0bdd 00000006 0048f51c
+0x0048f18c:   024cadf0 246eff90 00000006 0244d738
+0x0048f19c:   24a00000 246eff90 29af8958 29df3448 
+
+Instructions: (pc=0x0048f51c)
+0x0048f4fc:   fc f4 48 00 d5 de 5c 34 40 f5 48 00 70 e8 5c 34
+0x0048f50c:   00 00 00 00 68 df 5c 34 f4 f4 48 00 30 f5 48 00
+0x0048f51c:   6c f5 48 00 1a 33 45 02 e8 be af 29 00 00 00 00
+0x0048f52c:   e8 be af 29 0a 00 00 00 e8 03 00 00 a0 86 01 00 
+
+
+Register to memory mapping:
+
+EAX=0x345d42b8 is an oop
+{instance class} 
+ - klass: {other class}
+EBX=0x345cfce0 is an oop
+{method} 
+ - klass: {other class}
+ECX=0x29af8958 is an oop
+vertailu.Splaypuu 
+ - klass: 'vertailu/Splaypuu'
+EDX=0x00000000 is an unknown value
+ESP=0x0048f12c is pointing into the stack for thread: 0x02449800
+EBP=0x00000004 is an unknown value
+ESI=0x246d6ea0 is an oop
+vertailu.Solmu 
+ - klass: 'vertailu/Solmu'
+EDI=0x00000000 is an unknown value
+
+
+Stack: [0x00440000,0x00490000],  sp=0x0048f12c,  free space=316k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  0x0048f51c
+
+[error occurred during error reporting (printing native stack), id 0xc0000005]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00622400 JavaThread "Service Thread" daemon [_thread_blocked, id=3988, stack(0x04940000,0x04990000)]
+  0x0061d400 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=4788, stack(0x04730000,0x04780000)]
+  0x0061c000 JavaThread "Attach Listener" daemon [_thread_blocked, id=7056, stack(0x047d0000,0x04820000)]
+  0x00618c00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=7104, stack(0x04780000,0x047d0000)]
+  0x0060f000 JavaThread "Finalizer" daemon [_thread_blocked, id=4520, stack(0x046e0000,0x04730000)]
+  0x0060a400 JavaThread "Reference Handler" daemon [_thread_blocked, id=6544, stack(0x04500000,0x04550000)]
+=>0x02449800 JavaThread "main" [_thread_in_Java, id=6668, stack(0x00440000,0x00490000)]
+
+Other Threads:
+  0x00606800 VMThread [stack: 0x02370000,0x023c0000] [id=1656]
+  0x00634000 WatcherThread [stack: 0x04a20000,0x04a70000] [id=4528]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 4992K, used 2015K [0x245a0000, 0x24b00000, 0x29af0000)
+  eden space 4480K,  33% used [0x245a0000, 0x24717e98, 0x24a00000)
+  from space 512K, 100% used [0x24a00000, 0x24a80000, 0x24a80000)
+  to   space 512K,   0% used [0x24a80000, 0x24a80000, 0x24b00000)
+ tenured generation   total 10944K, used 3707K [0x29af0000, 0x2a5a0000, 0x345a0000)
+   the space 10944K,  33% used [0x29af0000, 0x29e8ee78, 0x29e8f000, 0x2a5a0000)
+ compacting perm gen  total 12288K, used 215K [0x345a0000, 0x351a0000, 0x385a0000)
+   the space 12288K,   1% used [0x345a0000, 0x345d5e50, 0x345d6000, 0x351a0000)
+    ro space 10240K,  45% used [0x385a0000, 0x38a219f0, 0x38a21a00, 0x38fa0000)
+    rw space 12288K,  54% used [0x38fa0000, 0x396205a0, 0x39620600, 0x39ba0000)
+
+Code Cache  [0x02450000, 0x024d8000, 0x04450000)
+ total_blobs=211 nmethods=77 adapters=67 free_code_cache=32241Kb largest_free_block=33015552
+
+Dynamic libraries:
+0x000f0000 - 0x0011e000 	C:\Program Files (x86)\Java\jdk1.7.0_01\bin\java.exe
+0x77ce0000 - 0x77e60000 	C:\Windows\SysWOW64\ntdll.dll
+0x76150000 - 0x76260000 	C:\Windows\syswow64\kernel32.dll
+0x76440000 - 0x76487000 	C:\Windows\syswow64\KERNELBASE.dll
+0x776a0000 - 0x77740000 	C:\Windows\syswow64\ADVAPI32.dll
+0x75f40000 - 0x75fec000 	C:\Windows\syswow64\msvcrt.dll
+0x76670000 - 0x76689000 	C:\Windows\SysWOW64\sechost.dll
+0x777c0000 - 0x778b0000 	C:\Windows\syswow64\RPCRT4.dll
+0x75670000 - 0x756d0000 	C:\Windows\syswow64\SspiCli.dll
+0x75660000 - 0x7566c000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x756d0000 - 0x757d0000 	C:\Windows\syswow64\USER32.dll
+0x76390000 - 0x76420000 	C:\Windows\syswow64\GDI32.dll
+0x778b0000 - 0x778ba000 	C:\Windows\syswow64\LPK.dll
+0x75ea0000 - 0x75f3d000 	C:\Windows\syswow64\USP10.dll
+0x74040000 - 0x741de000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x76330000 - 0x76387000 	C:\Windows\syswow64\SHLWAPI.dll
+0x75da0000 - 0x75e00000 	C:\Windows\system32\IMM32.DLL
+0x76260000 - 0x7632c000 	C:\Windows\syswow64\MSCTF.dll
+0x63580000 - 0x6363e000 	C:\Program Files (x86)\Java\jdk1.7.0_01\jre\bin\msvcr100.dll
+0x63640000 - 0x63961000 	C:\Program Files (x86)\Java\jdk1.7.0_01\jre\bin\client\jvm.dll
+0x74210000 - 0x74217000 	C:\Windows\system32\WSOCK32.dll
+0x76a00000 - 0x76a35000 	C:\Windows\syswow64\WS2_32.dll
+0x76430000 - 0x76436000 	C:\Windows\syswow64\NSI.dll
+0x73ba0000 - 0x73bd2000 	C:\Windows\system32\WINMM.dll
+0x77690000 - 0x77695000 	C:\Windows\syswow64\PSAPI.DLL
+0x6eca0000 - 0x6ecac000 	C:\Program Files (x86)\Java\jdk1.7.0_01\jre\bin\verify.dll
+0x68580000 - 0x685a0000 	C:\Program Files (x86)\Java\jdk1.7.0_01\jre\bin\java.dll
+0x648b0000 - 0x648c3000 	C:\Program Files (x86)\Java\jdk1.7.0_01\jre\bin\zip.dll
+0x6b070000 - 0x6b15b000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: vertailu.Puuvertailu
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files (x86)\Java\jre7
+CLASSPATH=C:\Program Files (x86)\Java\jre7\lib\ext
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Java\jre7\bin;D:\Ohjelmat\WinSCP\;D:\Ohjelmat\PuTTY\;D:\Ohjelmat\MiKTEx\miktex\bin\x64\
+USERNAME=Anu
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 20 Model 2 Stepping 0, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 20 model 2 stepping 0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, popcnt, mmxext, lzcnt, sse4a
+
+Memory: 4k page, physical 4173532k(2035160k free), swap 8345212k(5304304k free)
+
+vm_info: Java HotSpot(TM) Client VM (21.1-b02) for windows-x86 JRE (1.7.0_01-b08), built on Oct  3 2011 02:11:36 by "java_re" with unknown MS VC++:1600
+
+time: Mon May 11 21:47:58 2015
+elapsed time: 26 seconds
+

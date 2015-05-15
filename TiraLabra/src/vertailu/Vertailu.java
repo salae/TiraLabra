@@ -105,10 +105,12 @@ public class Vertailu {
     */
     public void vertailePoisto(int[] maarat , int maxi, int kertaa){  
         Long[] ajat = new Long[4];
-        puut = new Puu[3];
-        this.puut[0]= this.binaari;
-        this.puut[1] = this.viisto;
-        this.puut[2] = this.puukeko;
+//        puut = new Puu[1];
+//        this.puut[0]= this.punamusta;
+//        puut = new Puu[3];
+//        this.puut[0]= this.binaari;
+//        this.puut[1] = this.viisto;
+//        this.puut[2] = this.puukeko;
 
         
         System.out.println("Vertaillaan poistoa.");
@@ -180,6 +182,9 @@ public class Vertailu {
         for(int i=0; i < lkm; i++) {
             int luku = r.nextInt(suurin)+1;
              p.lisaa(luku);
+//        System.out.println("lisätty: "+luku);
+//        System.out.println(this.getPunamusta().hae(luku).getOikeaLapsi());
+//       System.out.println(this.getPunamusta().hae(luku).getVasenLapsi());
         }
         return System.currentTimeMillis() - alkuAika;    
     }
@@ -303,7 +308,7 @@ public class Vertailu {
      * @param suurin suurin mahdollinen avaimen arvo
      */
     public void alustaPuut(int lkm, int suurin){
-         System.out.println("Puissa on valmiina " + lkm + " satunnaista lukua väliltä 1-" + suurin +".");
+//         System.out.println("Puissa on valmiina " + lkm + " satunnaista lukua väliltä 1-" + suurin +".");
          
          for(int i = 0; i < this.puut.length; i++){
              this.teeLisays(puut[i], lkm, suurin);

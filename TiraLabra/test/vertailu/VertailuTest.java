@@ -35,22 +35,22 @@ public class VertailuTest {
     public void tearDown() {
     }
 
-//    @Test
-//    public void testTeeLisays() {
-          //toimii
-//        System.out.println("teeLisays, binäärihakupuu");
-//        Puu p = v.getViisto();
-//        int lkm = 5;
-//        int suurin = 8;
-//        v.teeLisays(p, lkm, suurin);
+    @Test
+    public void testTeeLisays() {
+//          toimii
+        System.out.println("teeLisays, punamusta");
+        Puu p = v.getPunamusta();
+        int lkm = 50;
+        int suurin = 40;
+        v.teeLisays(p, lkm, suurin);
 //        ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());        
-//
-////        int expResult = ;
-////        int result = ;
-////        assertEquals(expResult, result);
-////        fail("The test case is a prototype.");
-//    }
-//
+
+//        int expResult = ;
+//        int result = ;
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+    }
+
 //    @Test
 //    public void testLaskeLisaystenKeskiarvo() {
 //        //toimii
@@ -126,24 +126,24 @@ public class VertailuTest {
 ////        fail("The test case is a prototype.");
 //    }
 
-    @Test
-    public void testPoistaLukuja() {
-        System.out.println("poistaLukuja");
-        v.alustaPuut(10, 15);
-//        Puu p = v.getViisto();
-        Puu p = v.getPunamusta();
-//        Puu p = v.getBinaari();
-//        Puu p = v.getPuukeko();
-        int lkm = 5;
-        int suurin = 15;
-        v.poistaLukuja(p, lkm, suurin);
-        ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());
-        
-//        Long expResult = null;
-//        Long result = Vertailu.poistaLukuja(p, lkm, suurin);
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testPoistaLukuja() {
+//        System.out.println("poistaLukuja");
+//        v.alustaPuut(10, 15);
+////        Puu p = v.getViisto();
+//        Puu p = v.getPunamusta();
+////        Puu p = v.getBinaari();
+////        Puu p = v.getPuukeko();
+//        int lkm = 5;
+//        int suurin = 15;
+//        v.poistaLukuja(p, lkm, suurin);
+//        ((BinHakupuu)p).tulosta(((BinHakupuu)p).getJuuri());
+//        
+////        Long expResult = null;
+////        Long result = Vertailu.poistaLukuja(p, lkm, suurin);
+////        assertEquals(expResult, result);
+////        fail("The test case is a prototype.");
+//    }
 
 //    @Test
 //    public void testLaskePoistojenKeskiarvo() {

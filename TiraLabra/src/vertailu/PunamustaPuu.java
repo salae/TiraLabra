@@ -86,26 +86,24 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
     }
     
     private void poistaSolmu(PmSolmu pois){
-        if(pois == nil){
-            return;
-        }
+//         if (pois == nil || pois == null) {
+//            return;
+//        }       
         PmSolmu y = pois;
-        PmSolmu x;
+        PmSolmu x ;
         boolean yOrigVari = y.onkoPunainen();
-        if(pois.getVasenLapsi() == this.nil){
-            x = (PmSolmu) pois.getOikeaLapsi();
-            this.vaihdaAlipuuta(pois, (PmSolmu) pois.getOikeaLapsi());
-        }else if(pois.getOikeaLapsi() == this.nil){
-            x = (PmSolmu) pois.getVasenLapsi();
-            this.vaihdaAlipuuta(pois,(PmSolmu) pois.getVasenLapsi());
-        }else {
+        if(pois.getVasenLapsi() == this.nil || pois.getOikeaLapsi() == this.nil){
+            x = (pois.getVasenLapsi() == this.nil) ? (PmSolmu) pois.getOikeaLapsi()
+                    : (PmSolmu) pois.getVasenLapsi();
+            this.vaihdaAlipuuta(pois, x);
+        }else {  // 2 lasta
             y = (PmSolmu) this.haeMin(pois.getOikeaLapsi());
             yOrigVari = y.onkoPunainen();
             x = (PmSolmu) y.getOikeaLapsi();
             if(y.getVanhempi() == pois){
                 x.setVanhempi(y);
             }else{
-                this.vaihdaAlipuuta(y, (PmSolmu) y.getOikeaLapsi());
+                this.vaihdaAlipuuta(y, x);
                 y.setOikeaLapsi(pois.getOikeaLapsi());
                 y.getOikeaLapsi().setVanhempi(y);
             }
@@ -146,7 +144,9 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
         }else {
             eka.getVanhempi().setOikeaLapsi(toka);
         }
-        toka.setVanhempi(eka.getVanhempi());
+//        if(toka != nil){
+            toka.setVanhempi(eka.getVanhempi());
+//        }        
     }    
     
     /**
@@ -155,21 +155,21 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      * @param x kierrettävä solmu
      */
     private void kiertoVasemmalle(PmSolmu x){
-        PmSolmu y = (PmSolmu) x.getOikeaLapsi();
-        x.setOikeaLapsi(y.getVasenLapsi());
-        if(y.getVasenLapsi() != this.nil){
-            y.getVasenLapsi().setVanhempi(x);
+        PmSolmu o = (PmSolmu) x.getOikeaLapsi();
+        x.setOikeaLapsi(o.getVasenLapsi());
+        if(o.getVasenLapsi() != this.nil ){
+            o.getVasenLapsi().setVanhempi(x);
         }
-        y.setVanhempi(x.getVanhempi());
+        o.setVanhempi(x.getVanhempi());
         if(x.getVanhempi() == this.nil){
-            this.setJuuri(y);
+            this.setJuuri(o);
         }else if(x == x.getVanhempi().getVasenLapsi()){
-            x.getVanhempi().setVasenLapsi(y);
+            x.getVanhempi().setVasenLapsi(o);
         }else {
-            x.getVanhempi().setOikeaLapsi(y);
+            x.getVanhempi().setOikeaLapsi(o);
         }
-        y.setVasenLapsi(x);
-        x.setVanhempi(y);
+        o.setVasenLapsi(x);
+        x.setVanhempi(o);
     }
     
     /**
@@ -180,7 +180,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
     private void kiertoOikealle(PmSolmu x){
         PmSolmu y = (PmSolmu) x.getVasenLapsi();
         x.setVasenLapsi(y.getOikeaLapsi());
-        if(y.getOikeaLapsi() != this.nil){
+        if(y.getOikeaLapsi() != this.nil && y != this.nil){
             y.getOikeaLapsi().setVanhempi(x);
         }
         y.setVanhempi(x.getVanhempi());
@@ -247,52 +247,67 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
      * @param x korjausta kaipaava solmu
      */
     private void korjaaPoisto(PmSolmu x) {
+//        System.out.println("x tullessa korjaukseen: "+x);
         while(x != this.getJuuri() && !x.onkoPunainen()){
-            PmSolmu sisar = null;
+//            PmSolmu sisar = nil;
             if(x == x.getVanhempi().getVasenLapsi()){
-                sisar = (PmSolmu) x.getVanhempi().getOikeaLapsi();
+                PmSolmu sisar = (PmSolmu) x.getVanhempi().getOikeaLapsi();
                 if(sisar.onkoPunainen()){
                     sisar.asetaVari(false);
                     ((PmSolmu)sisar.getVanhempi()).asetaVari(true);
                     this.kiertoVasemmalle((PmSolmu) x.getVanhempi());
                     sisar = (PmSolmu) x.getVanhempi().getOikeaLapsi();
                 }
-                if(!((PmSolmu)sisar.getVasenLapsi()).onkoPunainen() && 
-                   !((PmSolmu)sisar.getOikeaLapsi()).onkoPunainen()){
-                  sisar.asetaVari(true);
-                  x = (PmSolmu) x.getVanhempi();
-                } else if (!((PmSolmu)sisar.getOikeaLapsi()).onkoPunainen()){
-                    ((PmSolmu)sisar.getVasenLapsi()).asetaVari(false);
-                    sisar.asetaVari(true);
-                    this.kiertoOikealle(sisar);
-                    sisar = (PmSolmu) x.getVanhempi().getOikeaLapsi();
-                }
-                sisar.asetaVari(((PmSolmu)x.getVanhempi()).onkoPunainen());
-                ((PmSolmu)x.getVanhempi()).asetaVari(false);
-                ((PmSolmu)sisar.getOikeaLapsi()).asetaVari(false);
-                this.kiertoVasemmalle((PmSolmu) x.getVanhempi());
-                x = (PmSolmu) this.getJuuri();
-            } else {
-                 sisar = (PmSolmu) x.getVanhempi().getVasenLapsi();
+//                if(sisar != nil){
+                    if(!((PmSolmu)sisar.getVasenLapsi()).onkoPunainen() && !((PmSolmu)sisar.getOikeaLapsi()).onkoPunainen()){
+                      sisar.asetaVari(true);
+                      x = (PmSolmu) x.getVanhempi();
+                      continue;
+                    } else if (!((PmSolmu)sisar.getOikeaLapsi()).onkoPunainen()){
+                        ((PmSolmu)sisar.getVasenLapsi()).asetaVari(false);
+                        sisar.asetaVari(true);
+                        this.kiertoOikealle(sisar);
+                        sisar = (PmSolmu) x.getVanhempi().getOikeaLapsi();
+                    }
+                    sisar.asetaVari(((PmSolmu)x.getVanhempi()).onkoPunainen());
+                    ((PmSolmu)x.getVanhempi()).asetaVari(false);
+//                    System.out.println("x "+x);
+//                    System.out.println("vanhempi "+x.getVanhempi());
+//                    System.out.println("sisar " + sisar);
+//                    System.out.println(sisar.getOikeaLapsi());
+//                PmSolmu oSisar = (PmSolmu)sisar.getOikeaLapsi();
+//                PmSolmu pöö = x;
+//                if(sisar != nil){
+                        ((PmSolmu)sisar.getOikeaLapsi()).asetaVari(false);                    
+                        this.kiertoVasemmalle((PmSolmu) x.getVanhempi());
+                        x = (PmSolmu) this.getJuuri();
+//                     }                   
+//                }                
+                
+            } else if(x == x.getVanhempi().getOikeaLapsi()){
+                PmSolmu sisar = (PmSolmu) x.getVanhempi().getVasenLapsi();
                 if(sisar.onkoPunainen()){
                     sisar.asetaVari(false);
                     ((PmSolmu)sisar.getVanhempi()).asetaVari(true);
                     this.kiertoOikealle((PmSolmu) x.getVanhempi());
                     sisar = (PmSolmu) x.getVanhempi().getVasenLapsi();
                 }
-                if(!((PmSolmu)sisar.getVasenLapsi()).onkoPunainen() && 
-                   !((PmSolmu)sisar.getOikeaLapsi()).onkoPunainen()){
-                  sisar.asetaVari(true);
-                  x = (PmSolmu) x.getVanhempi();
-                } else if (!((PmSolmu)sisar.getVasenLapsi()).onkoPunainen()){
-                    ((PmSolmu)sisar.getOikeaLapsi()).asetaVari(false);
-                    sisar.asetaVari(true);
-                    this.kiertoVasemmalle(sisar);
-                    sisar = (PmSolmu) x.getVanhempi().getVasenLapsi();
-                }
-                sisar.asetaVari(((PmSolmu)x.getVanhempi()).onkoPunainen());
-                ((PmSolmu)x.getVanhempi()).asetaVari(false);
-                ((PmSolmu)sisar.getVasenLapsi()).asetaVari(false);
+//                if(sisar != nil){
+                    if(!((PmSolmu)sisar.getVasenLapsi()).onkoPunainen() && 
+                       !((PmSolmu)sisar.getOikeaLapsi()).onkoPunainen()){
+                      sisar.asetaVari(true);
+                      x = (PmSolmu) x.getVanhempi();
+                      continue;
+                    } else if (!((PmSolmu)sisar.getVasenLapsi()).onkoPunainen()){
+                        ((PmSolmu)sisar.getOikeaLapsi()).asetaVari(false);
+                        sisar.asetaVari(true);
+                        this.kiertoVasemmalle(sisar);
+                        sisar = (PmSolmu) x.getVanhempi().getVasenLapsi();
+                    }
+                    sisar.asetaVari(((PmSolmu)x.getVanhempi()).onkoPunainen());
+                    ((PmSolmu)x.getVanhempi()).asetaVari(false);
+                    ((PmSolmu)sisar.getVasenLapsi()).asetaVari(false);
+//                }
                 this.kiertoOikealle((PmSolmu) x.getVanhempi());
                 x = (PmSolmu) this.getJuuri();               
             }
