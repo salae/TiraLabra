@@ -160,14 +160,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
         if(o.getVasenLapsi() != this.nil ){
             o.getVasenLapsi().setVanhempi(x);
         }
-        o.setVanhempi(x.getVanhempi());
-        if(x.getVanhempi() == this.nil){
-            this.setJuuri(o);
-        }else if(x == x.getVanhempi().getVasenLapsi()){
-            x.getVanhempi().setVasenLapsi(o);
-        }else {
-            x.getVanhempi().setOikeaLapsi(o);
-        }
+        this.vaihdaAlipuuta(x, o);
         o.setVasenLapsi(x);
         x.setVanhempi(o);
     }
@@ -183,14 +176,7 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
         if(y.getOikeaLapsi() != this.nil && y != this.nil){
             y.getOikeaLapsi().setVanhempi(x);
         }
-        y.setVanhempi(x.getVanhempi());
-        if(x.getVanhempi() == this.nil){
-            this.setJuuri(y);
-        }else if(x == x.getVanhempi().getOikeaLapsi()){
-            x.getVanhempi().setOikeaLapsi(y);
-        }else {
-            x.getVanhempi().setVasenLapsi(y);
-        }
+        this.vaihdaAlipuuta(x, y);
         y.setOikeaLapsi(x);
         x.setVanhempi(y); 
     }
@@ -317,11 +303,11 @@ public class PunamustaPuu extends BinHakupuu implements Puu{
 
 
     @Override
-    public void tulosta(Solmu s) {
+    public void tulostaPuu(Solmu s) {
         if (s != nil) {
-           tulosta(s.getVasenLapsi());
+           tulostaPuu(s.getVasenLapsi());
            System.out.println(s.toString());
-           tulosta(s.getOikeaLapsi());
+           tulostaPuu(s.getOikeaLapsi());
         }
     } 
     

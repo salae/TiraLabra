@@ -20,7 +20,6 @@ public class PmSolmu extends Solmu{
      */
     public PmSolmu(int avain, boolean onkoPunainen){
         super(avain);
-        //periaatteessa tämän nähtävästi voisi pistää oleutusarvoisesti punaiseksi
         this.punainen = onkoPunainen;
     }
 

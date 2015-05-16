@@ -57,7 +57,7 @@ public class PunamustaPuuTest {
 //        pmPuu.lisaa(4); 
 //        System.out.println(pmPuu.getJuuri());
 //        pmPuu.lisaa(2);
-//        pmPuu.tulosta(pmPuu.getJuuri());
+//        pmPuu.tulostaPuu(pmPuu.getJuuri());
 //        int expResult = 2;
 //        int result = pmPuu.hae(2).getAvain();
 //        assertEquals(expResult, result);
@@ -81,7 +81,7 @@ public class PunamustaPuuTest {
 //        pmPuu.lisaa(5);
 //        System.out.println("juuri "+pmPuu.getJuuri());
 //        System.out.println("kahden jälkeen:");
-//        pmPuu.tulosta(pmPuu.getJuuri()); 
+//        pmPuu.tulostaPuu(pmPuu.getJuuri()); 
 //        pmPuu.lisaa(7);
 //        pmPuu.lisaa(1);
         
@@ -106,8 +106,8 @@ public class PunamustaPuuTest {
         
 //        System.out.println("juuri  3n "+pmPuu.getJuuri());
 //        System.out.println("3n jälkeen:");
-//        pmPuu.tulosta(pmPuu.getJuuri());        
-//        pmPuu.tulosta(pmPuu.getJuuri()); 
+//        pmPuu.tulostaPuu(pmPuu.getJuuri());        
+//        pmPuu.tulostaPuu(pmPuu.getJuuri()); 
 //        String expResult = "5 (musta)";
 //        String result =  pmPuu.getJuuri().toString();
 //        assertEquals(expResult, result);
@@ -129,12 +129,12 @@ public class PunamustaPuuTest {
 //        pmPuu.lisaa(4);
 //        pmPuu.lisaa(6);
 //        pmPuu.lisaa(1);
-//        pmPuu.tulosta(pmPuu.getJuuri()); 
+//        pmPuu.tulostaPuu(pmPuu.getJuuri()); 
 //        System.out.println("juuri "+pmPuu.getJuuri());
 //        System.out.println(pmPuu.getJuuri().getVasenLapsi());
 //        System.out.println(pmPuu.getJuuri().getOikeaLapsi());
 //        pmPuu.poista(4);        
-//        pmPuu.tulosta(pmPuu.getJuuri());
+//        pmPuu.tulostaPuu(pmPuu.getJuuri());
 //        int expResult = -1;
 //        int result = pmPuu.hae(4).getAvain();
 //        assertEquals(expResult, result);
@@ -147,11 +147,11 @@ public class PunamustaPuuTest {
 //        pmPuu.lisaa(4);
 //        pmPuu.lisaa(6);
 //        pmPuu.lisaa(1);
-//        pmPuu.tulosta(pmPuu.getJuuri());
+//        pmPuu.tulostaPuu(pmPuu.getJuuri());
 //        System.out.println("juuri ennen" + pmPuu.getJuuri());
 //        pmPuu.tyhjennaPuu(pmPuu.getJuuri());
 //        System.out.println("juuri jälkeen" + pmPuu.getJuuri());
-//        pmPuu.tulosta(pmPuu.getJuuri());
+//        pmPuu.tulostaPuu(pmPuu.getJuuri());
 //        int expResult = -1;
 //        int result =  pmPuu.getJuuri().getAvain();
 //        assertEquals(expResult, result);

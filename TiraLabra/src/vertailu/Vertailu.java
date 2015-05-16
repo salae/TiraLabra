@@ -224,7 +224,7 @@ public class Vertailu {
         Random r = new Random();
 
         for(int i=0; i < lkm; i++) {
-            int luku = r.nextInt(suurin-1)+1;
+            int luku = r.nextInt(suurin)+1;
             p.hae(luku);
         }
         return System.currentTimeMillis() - alkuAika;    

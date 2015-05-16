@@ -92,14 +92,7 @@ public class Splaypuu extends BinHakupuu implements Puu{
         if(y.getOikeaLapsi() != null) {
             y.getOikeaLapsi().setVanhempi(x);
         }
-        y.setVanhempi(x.getVanhempi());
-        if (x.getVanhempi() == null) {
-            this.setJuuri(y);
-        } else if (x == x.getVanhempi().getVasenLapsi()) {
-            x.getVanhempi().setVasenLapsi(y);
-        } else {
-            x.getVanhempi().setOikeaLapsi(y);
-        }
+        this.vaihdaAlipuuta(x, y);
         y.setOikeaLapsi(x);
         x.setVanhempi(y);
     }
@@ -114,14 +107,7 @@ public class Splaypuu extends BinHakupuu implements Puu{
         if(y.getVasenLapsi() != null) {
             y.getVasenLapsi().setVanhempi(x);
         }
-        y.setVanhempi(x.getVanhempi());
-        if(x.getVanhempi() == null) {
-            this.setJuuri(y);
-        }else if(x == x.getVanhempi().getVasenLapsi()) {
-            x.getVanhempi().setVasenLapsi(y);
-        }else {
-            x.getVanhempi().setOikeaLapsi(y);
-        }
+        this.vaihdaAlipuuta(x, y);
         y.setVasenLapsi(x);
         x.setVanhempi(y);
     }

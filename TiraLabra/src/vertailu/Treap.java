@@ -26,24 +26,10 @@ public class Treap extends BinHakupuu implements Puu{
         TreapSolmu uusi = new TreapSolmu(avain);
         this.lisaaSolmu(uusi);
         this.korjaaKeko(uusi);
-    }    
+    } 
     
-    @Override
-    public void poista(int avain) {
-        TreapSolmu pois = this.hae(avain);
-        if(pois != null){
-            valutaLehdeksi(pois);
-            if (pois == pois.getVanhempi().getOikeaLapsi()) {
-               pois.getVanhempi().setOikeaLapsi(null);
-            }else {
-               pois.getVanhempi().setVasenLapsi(null);
-            }           
-        }
-        
-    }
-    
-    /**
-     * Korjataan puu, niin että se toteuttaa keko-ominaisuuden.
+     /**
+     * Korjataan puu lisäyksen jälkeen, niin että se toteuttaa keko-ominaisuuden.
      * 
      * Kyseessä on minimikeko.
      *
@@ -61,7 +47,20 @@ public class Treap extends BinHakupuu implements Puu{
             this.setJuuri(s);
         }
     } 
-    
+       
+    @Override
+    public void poista(int avain) {
+        TreapSolmu pois = this.hae(avain);
+        if(pois != null){
+            valutaLehdeksi(pois);
+            if (pois == pois.getVanhempi().getOikeaLapsi()) {
+               pois.getVanhempi().setOikeaLapsi(null);
+            }else {
+               pois.getVanhempi().setVasenLapsi(null);
+            }           
+        }        
+    }
+   
     /**
      * Valuttaa poistettavan solmun alas päin puun lehdeksi.
      * 
@@ -95,14 +94,7 @@ public class Treap extends BinHakupuu implements Puu{
         if(y.getVasenLapsi() != null) {
             y.getVasenLapsi().setVanhempi(x);
         }
-        y.setVanhempi(x.getVanhempi());
-        if(x.getVanhempi() == null) {
-            this.setJuuri(y);
-        }else if(x == x.getVanhempi().getVasenLapsi()) {
-            x.getVanhempi().setVasenLapsi(y);
-        }else {
-            x.getVanhempi().setOikeaLapsi(y);
-        }
+        this.vaihdaAlipuuta(x, y);
         y.setVasenLapsi(x);
         x.setVanhempi(y);
     }
@@ -118,7 +110,19 @@ public class Treap extends BinHakupuu implements Puu{
         if(y.getOikeaLapsi() != null) {
             y.getOikeaLapsi().setVanhempi(x);
         }
-        y.setVanhempi(x.getVanhempi());
+        this.vaihdaAlipuuta(x, y);
+        y.setOikeaLapsi(x);
+        x.setVanhempi(y);
+    }
+
+    /**
+     * Asettaa lapsi-solmun oikelle puolelle vanhempaan nähden. 
+     * Jos vanhempi on null, tehdään lapsesta juuri.
+     * 
+     * @param lapsi
+     * @param vanhempi 
+     */
+    private void asetaVanhempiLapsiSuhde(Solmu x, Solmu y){
         if (x.getVanhempi() == null) {
             this.setJuuri(y);
         } else if (x == x.getVanhempi().getVasenLapsi()) {
@@ -126,11 +130,7 @@ public class Treap extends BinHakupuu implements Puu{
         } else {
             x.getVanhempi().setOikeaLapsi(y);
         }
-        y.setOikeaLapsi(x);
-        x.setVanhempi(y);
     }
-
-
   
     
 }

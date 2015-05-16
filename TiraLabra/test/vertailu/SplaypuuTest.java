@@ -75,9 +75,9 @@ public class SplaypuuTest {
         splay.lisaa(4);
         splay.lisaa(6);
         splay.lisaa(1);
-        splay.tulosta(splay.getJuuri());
+        splay.tulostaPuu(splay.getJuuri());
         splay.poista(4);
-        splay.tulosta(splay.getJuuri());
+        splay.tulostaPuu(splay.getJuuri());
         Solmu expResult = null;
         Solmu result =  splay.hae(4);
         assertEquals(expResult, result);

@@ -120,13 +120,13 @@ public class BinHakupuuTest {
     @Test
     public void testPoista2lasta() {
         System.out.println("poista, kaksi lasta");
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         bin.lisaa(3);
         bin.lisaa(4);
         bin.lisaa(1);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         bin.poista(3);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         Solmu expResult = null;
         Solmu result =  bin.hae(3);
         assertEquals(expResult, result);
@@ -138,9 +138,9 @@ public class BinHakupuuTest {
         bin.lisaa(3);
         bin.lisaa(4);
         bin.lisaa(1);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         bin.poista(1);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         Solmu expResult = null;
         Solmu result =  bin.hae(1);
         assertEquals(expResult, result);
@@ -153,9 +153,9 @@ public class BinHakupuuTest {
         bin.lisaa(4);
         bin.lisaa(6);
         bin.lisaa(1);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         bin.poista(4);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         Solmu expResult = null;
         Solmu result =  bin.hae(4);
         assertEquals(expResult, result);
@@ -181,9 +181,9 @@ public class BinHakupuuTest {
         bin.lisaa(4);
         bin.lisaa(6);
         bin.lisaa(1);
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         bin.tyhjennaPuu(bin.getJuuri());
-        bin.tulosta(bin.getJuuri());
+        bin.tulostaPuu(bin.getJuuri());
         Solmu expResult = null;
         Solmu result =  bin.getJuuri();
         assertEquals(expResult, result);

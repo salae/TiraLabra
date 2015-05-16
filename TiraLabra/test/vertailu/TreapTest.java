@@ -42,7 +42,7 @@ public class TreapTest {
         TreapSolmu s2 = new TreapSolmu(2);
         tr.lisaaSolmu(s1);        
         tr.lisaaSolmu(s2);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         TreapSolmu expResult = s2;
         TreapSolmu result = tr.hae(2);
         assertEquals(expResult, result);
@@ -66,7 +66,7 @@ public class TreapTest {
         System.out.println("lisaa");
         int avain = 5;
         tr.lisaa(avain);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         int expResult = avain;
         int result = tr.getJuuri().getAvain();
         assertEquals(expResult, result);
@@ -77,9 +77,9 @@ public class TreapTest {
         tr.lisaa(3);
         tr.lisaa(4);
         tr.lisaa(1);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         tr.poista(3);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         Solmu expResult = null;
         Solmu result =  tr.hae(3);
         assertEquals(expResult, result);
@@ -91,9 +91,9 @@ public class TreapTest {
         tr.lisaa(3);
         tr.lisaa(4);
         tr.lisaa(1);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         tr.poista(1);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         Solmu expResult = null;
         Solmu result =  tr.hae(1);
         assertEquals(expResult, result);
@@ -106,9 +106,9 @@ public class TreapTest {
         tr.lisaa(4);
         tr.lisaa(6);
         tr.lisaa(1);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         tr.poista(4);
-        tr.tulosta(tr.getJuuri());
+        tr.tulostaPuu(tr.getJuuri());
         Solmu expResult = null;
         Solmu result =  tr.hae(4);
         assertEquals(expResult, result);

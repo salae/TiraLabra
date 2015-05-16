@@ -31,7 +31,7 @@ public interface Puu {
      */
     public void poista(int avain);
     
-     /**
+    /**
      * Tyhjentää annetusta solmusta alkavan alipuun.
      * 
      * Poistaa kaikki puun solmut.
@@ -40,9 +40,37 @@ public interface Puu {
      */
     public void tyhjennaPuu(Solmu s);   
     
-//  Mietin vielä tarvitaanko seuraavia
-//    public String tulostaPuu();
-//    public int haeMin();
-//    public int haeMax();
+    /**
+     * Tulostaa annetusta solmusta alkavan alipuun.
+     * 
+     * Jos halutaan tulostaa koko puu, annetaan parametrina puun juuri.
+     * 
+     * @param s juuri, josta alkava alipuu tulostetaan
+     */
+    public void tulostaPuu(Solmu s);
+    
+     /**
+     * Palauttaa solmun, jolla on arvoltaan pienin avain.
+     * 
+     * Pienimmän arvon etsintä koskee alipuuta, jonka juuri annetaan parametrinä.
+     * Pienimpiä arvoja voi olla useita, joista yksi palautetaan. Jos puu on
+     * tyhjä, palautetaan null.
+     * 
+     * @param s sen puun juuri, josta pienintä arvoa haetaan
+     * @return pienimmän avaimen omaava solmu
+     */   
+    public Solmu haeMin(Solmu s);
+ 
+    /**
+     * Palauttaa solmun, jolla on arvoltaan suurin avain.
+     * 
+     * Suurimman arvon etsintä koskee alipuuta, jonka juuri annetaan parametrinä.
+     * Suurimpia arvoja voi olla useita, joista yksi palautetaan. Jos puu on
+     * tyhjä, palautetaan null.
+     * 
+     * @param s sen puun juuri, josta suurinta arvoa haetaan
+     * @return suurimman avaimen omaava solmu
+     */   
+    public Solmu haeMax(Solmu s);
     
 }

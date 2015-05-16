@@ -38,10 +38,9 @@ public class BinHakupuu implements Puu{
         this.juuri = juuri;
     }
     
-    
     @Override
     public Solmu hae(int avain) {
-        Solmu x = this.juuri;  //etsintäkohta
+        Solmu x = this.juuri;
         while(x != null && x.getAvain() != avain){
             if(avain < x.getAvain()) {
                 x = x.getVasenLapsi();
@@ -63,15 +62,15 @@ public class BinHakupuu implements Puu{
      * 
      * @param uusi lisättävä solmu
      */
-    public void lisaaSolmu(Solmu uusi) {        
-        Solmu p = null;  //vanhempi
-        Solmu x = this.juuri;  //etsintäkohta          
+    protected void lisaaSolmu(Solmu uusi) {        
+        Solmu vanhempi = null; 
+        Solmu x = this.juuri;           
         while(x != null){
-            p = x;
+            vanhempi = x;
             x = (uusi.getAvain() < x.getAvain()) ? x.getVasenLapsi() :  x.getOikeaLapsi();            
         }
-        uusi.setVanhempi(p);
-        asetaVanhempiLapsiSuhde(uusi, p);
+        uusi.setVanhempi(vanhempi);
+        asetaVanhempiLapsiSuhde(uusi, vanhempi);
   
     }
 
@@ -82,7 +81,7 @@ public class BinHakupuu implements Puu{
      * @param lapsi
      * @param vanhempi 
      */
-    protected void asetaVanhempiLapsiSuhde(Solmu lapsi, Solmu vanhempi){
+    private void asetaVanhempiLapsiSuhde(Solmu lapsi, Solmu vanhempi){
         if(vanhempi == null){
             this.setJuuri(lapsi);
         }else if(lapsi.getAvain() < vanhempi.getAvain()){
@@ -99,12 +98,13 @@ public class BinHakupuu implements Puu{
             this.poistaSolmu(pois);
         }
     }
+    
     /**
      * Poistaa puusta solmun
      * 
      * @param pois poistettava solmu 
      */
-    public void poistaSolmu(Solmu pois){
+    protected void poistaSolmu(Solmu pois){
         if(pois.getVasenLapsi() == null){
             this.vaihdaAlipuuta(pois, pois.getOikeaLapsi());
         }else if(pois.getOikeaLapsi() == null){
@@ -139,35 +139,17 @@ public class BinHakupuu implements Puu{
         if(toka != null){
             toka.setVanhempi(eka.getVanhempi());
         }
-    }
-    
-    /**
-     * Palauttaa solmun, jolla on arvoltaan pienin avain.
-     * 
-     * Pienimmän arvon etsintä koskee alipuuta, jonka juuri annetaan parametrinä.
-     * Pienimpiä arvoja voi olla useita, joista yksi palautetaan. Jos puu on
-     * tyhjä, palautetaan null.
-     * 
-     * @param s sen puun juuri, josta pienintä arvoa haetaan
-     * @return pienimmän avaimen omaava solmu
-     */
+    }   
+
+    @Override    
     public Solmu haeMin(Solmu s){
         while(s.getVasenLapsi() != null){
             s = s.getVasenLapsi();
         }        
         return s;
-    }
-    
-     /**
-     * Palauttaa solmun, jolla on arvoltaan suurin avain.
-     * 
-     * Suurimman arvon etsintä koskee alipuuta, jonka juuri annetaan parametrinä.
-     * Suurimpia arvoja voi olla useita, joista yksi palautetaan. Jos puu on
-     * tyhjä, palautetaan null.
-     * 
-     * @param s sen puun juuri, josta suurinta arvoa haetaan
-     * @return suurimman avaimen omaava solmu
-     */
+    }    
+
+    @Override
     public Solmu haeMax(Solmu s){
         while(s.getOikeaLapsi() != null){
             s = s.getOikeaLapsi();
@@ -184,18 +166,12 @@ public class BinHakupuu implements Puu{
         }
     }
     
-    /**
-     * Tulostaa annetusta solmusta alkavan alipuun.
-     * 
-     * Jos halutaan tulostaa koko puu, annetaan parametrina puun juuri.
-     * 
-     * @param s juuri, josta alkava alipuu tulostetaan
-     */
-    public void tulosta(Solmu s) {
+    @Override
+    public void tulostaPuu(Solmu s) {
         if (s != null) {
-           tulosta(s.getVasenLapsi());
+           tulostaPuu(s.getVasenLapsi());
            System.out.println(s.toString());
-           tulosta(s.getOikeaLapsi());
+           tulostaPuu(s.getOikeaLapsi());
         }
     }
 }
