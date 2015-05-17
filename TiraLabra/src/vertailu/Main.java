@@ -2,14 +2,15 @@ package vertailu;
 
 import java.util.Scanner;
 /**
- * Luokan tarkoituksena on vertailla erilaisia puurakenteita ja
+ * Luokka sisältää päämetodin, josta ohjelma käynnistetään 
+ * sekä tekstipohjaisen käyttöliittymän.
+ *
+ * Ohjelman tarkoituksena on vertailla erilaisia puurakenteita ja
  * niiden tehokkuutta lisäys-, poisto- ja hakuoperaatioissa.
  * 
- * Sisältää päämetodin, josta ohjelma käynnistetään.
- *
  * @author Anu
  */
-public class Puuvertailu {
+public class Main {
     
    private static Scanner lukija = new Scanner(System.in);
     
@@ -32,9 +33,7 @@ public class Puuvertailu {
         System.out.println("1 - Vertaile lisäystä");
         System.out.println("2 - Vertaile poistoa");
         System.out.println("3 - Vertaile hakua");
-//        System.out.println("4 - Valmiit testit");
-        System.out.println("0 - Lopeta ohjelma");
-        
+        System.out.println("0 - Lopeta ohjelma");        
         String valittu = lukija.next();
         return valittu.trim();      
     }
@@ -47,33 +46,31 @@ public class Puuvertailu {
     public static void main(String[] args) {
         
         String valinta = ""; 
-        int[] lukumaarat = {20000,50000,100000};
-        int[] lukumaarat2 = {500 ,5000};
+        int[] lukumaarat = {200,1000,2000};
+        int[] lukumaarat2 = {5000 ,10000};
+        int[] lukumaarat3 = {200000};
         Vertailu v = new Vertailu();
         
-        printtaaInfo();       
+        printtaaInfo();    
+        
+        
         
         do {
            valinta = toimintaValikko();
            switch (valinta) {
                 case "1":
-                    v.vertaileLisays(lukumaarat,1000 ,10);
+                    v.vertaileLisays(lukumaarat3,1000 ,2);
                     break;
                 case "2":
-                    v.vertailePoisto(lukumaarat2,1000 ,5);
+                    v.vertailePoisto(lukumaarat2,10000,5,100000);
                     break;
                 case "3":
-                    v.vertaileHaku(lukumaarat,10000,10);
-                    break;
-//                case "4":
-//                    valmiitTestit();
-//                    break;                    
+                    v.vertaileHaku(lukumaarat3,10000,2,100000);
+                    break;                   
                 case "0":
                     System.out.println("Hei hei!");
                     break;
            }           
-        }while (!valinta.equals("0"));
-                   
-    }
-    
+        }while (!valinta.equals("0"));                   
+    }    
 }

@@ -34,8 +34,6 @@ public interface Puu {
     /**
      * Tyhjentää annetusta solmusta alkavan alipuun.
      * 
-     * Poistaa kaikki puun solmut.
-     * 
      * @param s juuri, josta alkava alipuu tyhjennetään
      */
     public void tyhjennaPuu(Solmu s);   

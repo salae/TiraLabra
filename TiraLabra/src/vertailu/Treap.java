@@ -19,8 +19,13 @@ public class Treap extends BinHakupuu implements Puu{
     @Override
     public TreapSolmu hae(int avain) {
         return (TreapSolmu) super.hae(avain); 
-    } 
+    }
     
+    /**
+     * {@inheritDoc}
+     * 
+     * Lisäyksen jälkeen tarkistetaan, että kekoehdot täyttyvät.
+     */   
     @Override
     public void lisaa(int avain) {
         TreapSolmu uusi = new TreapSolmu(avain);
@@ -28,7 +33,7 @@ public class Treap extends BinHakupuu implements Puu{
         this.korjaaKeko(uusi);
     } 
     
-     /**
+    /**
      * Korjataan puu lisäyksen jälkeen, niin että se toteuttaa keko-ominaisuuden.
      * 
      * Kyseessä on minimikeko.
@@ -46,8 +51,13 @@ public class Treap extends BinHakupuu implements Puu{
         if (s.getVanhempi() == null) {
             this.setJuuri(s);
         }
-    } 
-       
+    }
+    
+    /**
+     * {@inheritDoc}
+     * 
+     *  Poistamisessa otetaan huomioon kekoehdon säilyminen.
+     */      
     @Override
     public void poista(int avain) {
         TreapSolmu pois = this.hae(avain);
@@ -63,6 +73,8 @@ public class Treap extends BinHakupuu implements Puu{
    
     /**
      * Valuttaa poistettavan solmun alas päin puun lehdeksi.
+     * 
+     * Varmistaa samalla, että treap pysyy kekona.
      * 
      * @param pois alas valutettava solmu
      */
@@ -113,24 +125,5 @@ public class Treap extends BinHakupuu implements Puu{
         this.vaihdaAlipuuta(x, y);
         y.setOikeaLapsi(x);
         x.setVanhempi(y);
-    }
-
-    /**
-     * Asettaa lapsi-solmun oikelle puolelle vanhempaan nähden. 
-     * Jos vanhempi on null, tehdään lapsesta juuri.
-     * 
-     * @param lapsi
-     * @param vanhempi 
-     */
-    private void asetaVanhempiLapsiSuhde(Solmu x, Solmu y){
-        if (x.getVanhempi() == null) {
-            this.setJuuri(y);
-        } else if (x == x.getVanhempi().getVasenLapsi()) {
-            x.getVanhempi().setVasenLapsi(y);
-        } else {
-            x.getVanhempi().setOikeaLapsi(y);
-        }
-    }
-  
-    
+    }   
 }

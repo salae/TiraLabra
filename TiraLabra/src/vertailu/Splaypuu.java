@@ -3,27 +3,26 @@ package vertailu;
 /**
  * Splaypuu on tasapainotettu binäärihakupuu, jonka erityisominaisuus on 
  * mukautuminen. Avainkysely nostaa kysytyn solmun puun juureksi, jolloin
- * peräkkäiset samoihin avaimiin kodistuvat operaatiot ovat nopeita.
+ * peräkkäiset samoihin avaimiin kohdistuvat operaatiot ovat nopeita.
  * 
  * @author Anu
  */
-public class Splaypuu extends BinHakupuu implements Puu{
-    
-    private Solmu juuri;
-    
+public class Splaypuu extends BinHakupuu implements Puu{    
+
     /**
      * Luo tyhjän splaypuun.
      * 
      */
     public Splaypuu(){
-        this.juuri = null;
+        this.setJuuri(null);
     }
     
     /**
-     * @inheritDoc 
+     * {@inheritDoc}
      * 
      * Jos haettu avain löytyy, solmulle suoritetaan splay-operaatio.
      */
+    @Override
     public Solmu hae(int avain) {
         Solmu haettu = super.hae(avain);
         if(haettu != null) {
@@ -33,24 +32,32 @@ public class Splaypuu extends BinHakupuu implements Puu{
     }
     
     /**
-     * @inheritDoc 
+     * {@inheritDoc}
      * 
      * Lisätylle solmulle suoritetaan splay-operaatio.
      */
+    @Override
     public void lisaa(int avain) {
         Solmu uusi = new Solmu(avain);
         this.lisaaSolmu(uusi);
         this.splay(uusi);
     }
-     /**
-     * @inheritDoc 
+    
+    /**
+     * {@inheritDoc}
      * 
-     * Poistamisen yhteydessä suoritetaan splay-operaatio
+     * Poistamisen jälkeen suoritetaan splay-operaatio
+     * poistetun solmun vanhemmalle.
      */
+    @Override
     public void poista(int avain){
-        Solmu pois = this.hae(avain); //splay toteutuu jo täällä
+        Solmu pois = super.hae(avain);
         if(pois != null){
+           Solmu vanhempi = pois.getVanhempi();
            this.poistaSolmu(pois); 
+           if(vanhempi != null){
+              this.splay(vanhempi); 
+           }           
         }        
     }   
 

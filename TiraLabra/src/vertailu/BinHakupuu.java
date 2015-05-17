@@ -159,11 +159,7 @@ public class BinHakupuu implements Puu{
     
     @Override
     public void tyhjennaPuu(Solmu s) {
-        if (s != null) {
-           tyhjennaPuu(s.getVasenLapsi());
-           poistaSolmu(s);
-           tyhjennaPuu(s.getOikeaLapsi());
-        }
+        this.setJuuri(null);
     }
     
     @Override

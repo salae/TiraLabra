@@ -100,6 +100,7 @@ public class Solmu implements Comparable<Solmu>{
      * 
      * @return solmun sisältö merkkijonona
      */
+    @Override
     public String toString(){
         return String.valueOf(this.avain);
     }
@@ -112,6 +113,7 @@ public class Solmu implements Comparable<Solmu>{
      * negatiivinen luku, jos vertailtava on suurempi; 
      * posittivnen luku, jos vertailtava on pienempi 
      */
+    @Override
      public int compareTo(Solmu vertailtava) {
        return this.getAvain() - vertailtava.getAvain();
     }

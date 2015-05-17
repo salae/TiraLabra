@@ -78,6 +78,7 @@ public class SplaypuuTest {
         splay.tulostaPuu(splay.getJuuri());
         splay.poista(4);
         splay.tulostaPuu(splay.getJuuri());
+        System.out.println("juuri 4n poiston jälkeen:"+ splay.getJuuri());
         Solmu expResult = null;
         Solmu result =  splay.hae(4);
         assertEquals(expResult, result);
