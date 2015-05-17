@@ -45,27 +45,26 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        String valinta = ""; 
-        int[] lukumaarat = {200,1000,2000};
-        int[] lukumaarat2 = {5000 ,10000};
-        int[] lukumaarat3 = {200000};
+        String valinta; 
+        int[] lukumaarat = {100000,200000,300000};
+        int[] lukumaarat2 = {100000,500000,1000000};
         Vertailu v = new Vertailu();
         
-        printtaaInfo();    
-        
-        
+        printtaaInfo();  
         
         do {
            valinta = toimintaValikko();
            switch (valinta) {
                 case "1":
-                    v.vertaileLisays(lukumaarat3,1000 ,2);
+                    v.vertaileLisays(lukumaarat,1000,5);
+                    v.vertaileLisays(lukumaarat,100000,5);
                     break;
                 case "2":
-                    v.vertailePoisto(lukumaarat2,10000,5,100000);
+                    v.vertailePoisto(lukumaarat,100000,5,300000);
                     break;
                 case "3":
-                    v.vertaileHaku(lukumaarat3,10000,2,100000);
+                    v.vertaileHaku(lukumaarat2,1000,5,100000);
+                    v.vertaileHaku(lukumaarat2,100000,5,100000);
                     break;                   
                 case "0":
                     System.out.println("Hei hei!");

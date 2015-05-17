@@ -76,6 +76,7 @@ public class SplaypuuTest {
         splay.lisaa(6);
         splay.lisaa(1);
         splay.tulostaPuu(splay.getJuuri());
+        System.out.println("juuri 4n poistoa ennen:"+ splay.getJuuri());
         splay.poista(4);
         splay.tulostaPuu(splay.getJuuri());
         System.out.println("juuri 4n poiston jälkeen:"+ splay.getJuuri());

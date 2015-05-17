@@ -63,11 +63,13 @@ public class Treap extends BinHakupuu implements Puu{
         TreapSolmu pois = this.hae(avain);
         if(pois != null){
             valutaLehdeksi(pois);
-            if (pois == pois.getVanhempi().getOikeaLapsi()) {
-               pois.getVanhempi().setOikeaLapsi(null);
-            }else {
-               pois.getVanhempi().setVasenLapsi(null);
-            }           
+            if(pois.getVanhempi() != null){
+                if (pois == pois.getVanhempi().getOikeaLapsi()) {
+                    pois.getVanhempi().setOikeaLapsi(null);
+                }else {
+                    pois.getVanhempi().setVasenLapsi(null);
+               }  
+            }          
         }        
     }
    
